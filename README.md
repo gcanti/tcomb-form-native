@@ -116,9 +116,104 @@ AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
 
 ![Result after a validation error](docs/images/errorResult.png)
 
-# Docs and API
+# Docs
 
-Coming soon...
+## Types
+
+### Optional field
+
+To create an optional field wrap the field type with `t.maybe`:
+
+```js
+var Person = t.struct({
+  name: t.Str,
+  surname: t.Str,
+  email: t.maybe(t.Str) // an optional string
+});
+```
+
+The label postfix ` (optional)` is automatically generated.
+
+### Numeric field
+
+To create a numeric field use `t.Num`:
+
+```js
+var Person = t.struct({
+  name: t.Str,
+  surname: t.Str,
+  email: t.maybe(t.Str),
+  age: t.Num // a numeric field
+});
+```
+
+tcomb-form-native converts numbers to / from strings.
+
+### Boolean field
+
+To create a boolean field use `t.Bool`:
+
+```js
+var Person = t.struct({
+  name: t.Str,
+  surname: t.Str,
+  email: t.maybe(t.Str),
+  age: t.Num,
+  rememberMe: t.Bool // a boolean field
+});
+```
+
+Booleans are displayed as switches.
+
+### Enum field
+
+To create an enum field use `t.enums`:
+
+```js
+var Gender = t.enums({
+  M: 'Male',
+  F: 'Female'
+});
+
+var Person = t.struct({
+  name: t.Str,
+  surname: t.Str,
+  email: t.maybe(t.Str),
+  age: t.Num,
+  rememberMe: t.Bool,
+  gender: Gender // enums field
+});
+```
+
+enums are displayed as `PickerIOS`.
+
+### Subtypes
+
+A *predicate* is a function with the following signature:
+
+```
+(x: any) => boolean
+```
+
+You can refine a type with `t.subtype(type, predicate)`:
+
+```js
+// a type representing positive numbers
+var Positive = t.subtype(t.Num, function (n) {
+  return n >= 0;
+});
+
+var Person = t.struct({
+  name: t.Str,
+  surname: t.Str,
+  email: t.maybe(t.Str),
+  age: Positive, // refinement
+  rememberMe: t.Bool,
+  gender: Gender
+});
+```
+
+Subtypes allow you to express any custom validation with a simple predicate.
 
 # License
 
