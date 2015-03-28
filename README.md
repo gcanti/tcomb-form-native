@@ -79,7 +79,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 50,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
   },
   title: {
     fontSize: 30,
