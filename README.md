@@ -112,7 +112,7 @@ AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
 
 ![Result](docs/images/result.png)
 
-### Preview after a validation error:
+### Result after a validation error:
 
 ![Result after a validation error](docs/images/errorResult.png)
 
@@ -214,6 +214,80 @@ var Person = t.struct({
 ```
 
 Subtypes allow you to express any custom validation with a simple predicate.
+
+## Options
+
+To customize the form look and feel passing a `options` prop to the `Form` component:
+
+```js
+<Form type={Model} options={options} />
+```
+
+### Fieldset options
+
+#### Automatically generated placeholders
+
+Pass the option `auto: 'placeholders'` to generate default placeholders:
+
+```js
+var options = {
+  auto: 'placeholders'
+};
+
+<Form type={Person} options={options} />
+```
+
+![Placeholders](docs/images/placeholders.png)
+
+Or `auto: 'none'` if you don't want neither labels nor placeholders.
+
+```js
+var options = {
+  auto: 'none'
+};
+```
+
+#### Fields order
+
+You can order the fields with the `order` option:
+
+```js
+var options = {
+  order: ['name', 'surname', 'rememberMe', 'gender', 'age', 'email']
+};
+```
+
+#### Default values
+
+You can set the default values passing a `value` prop to the `Form` component:
+
+```js
+var value = {
+  name: 'Giulio',
+  surname: 'Canti',
+  age: 41,
+  gender: 'M'
+};
+
+<Form type={Model} value={value} />
+```
+
+#### Fields configuration
+
+You can configure each field with the `fields` option:
+
+```js
+var options = {
+  fields: {
+    name: {
+      // name field configuration here..
+    },
+    surname: {
+      // surname field configuration here..
+    }
+  }
+});
+```
 
 # License
 
