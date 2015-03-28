@@ -20,6 +20,9 @@ With tcomb-form-native you simply call `<Form type={Model} />` to generate a for
 2. Usability and accessibility for free (automatic labels, inline validation, etc)
 3. No need to update forms when domain model changes
 
+# JSON Schema support
+
+You can convert a JSON Schema to a tcomb type thanks to the [tcomb-json-schema](https://github.com/gcanti/tcomb-json-schema) library.
 
 # Example
 
