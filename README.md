@@ -117,7 +117,7 @@ AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
 
 ### Result after a validation error:
 
-![Result after a validation error](docs/images/errorResult.png)
+![Result after a validation error](docs/images/validation.png)
 
 # Docs
 
@@ -291,6 +291,73 @@ var options = {
   }
 });
 ```
+
+### Textbox options
+
+**Tech note.** Values containing only white spaces are converted to `null`.
+
+#### Placeholder
+
+You can set the placeholder with the `placeholder` option:
+
+```js
+var options = {
+  fields: {
+    name: {
+      placeholder: 'Type your text here'
+    }
+  }
+};
+```
+
+#### Label
+
+You can set the label with the `label` option:
+
+```js
+var options = {
+  fields: {
+    name: {
+      label: 'My label'
+    }
+  }
+};
+```
+
+#### Help
+
+You can set a help message with the `help` option:
+
+```js
+var options = {
+  fields: {
+    name: {
+      help: 'Your help message here'
+    }
+  }
+};
+```
+
+![Help](docs/images/help.png)
+
+#### Standard options
+
+The following "standard" options are also available (see http://facebook.github.io/react-native/docs/textinput.html#content):
+
+- `autoCapitalize`
+- `autoCorrect`
+- `autoFocus`
+- `bufferDelay`
+- `clearButtonMode`
+- `editable`
+- `keyboardType`
+- `multiline`
+- `onBlur`
+- `onEndEditing`
+- `onFocus`
+- `onSubmitEditing`
+- `placeholderTextColor`
+- `selectionState`
 
 # License
 
