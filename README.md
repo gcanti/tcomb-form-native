@@ -10,7 +10,7 @@ The [tcomb library](https://github.com/gcanti/tcomb) provides a concise but expr
 
 The [tcomb-validation library](https://github.com/gcanti/tcomb-validation) builds on tcomb, providing validation functions for tcomb domain models.
 
-This library builds on those two and the awesome react-native.
+This library builds on those two and on the awesome react-native.
 
 # Benefits
 
@@ -65,6 +65,8 @@ var AwesomeProject = React.createClass({
 ```
 
 ### Result:
+
+(Labels are auto generated)
 
 ![Result](docs/images/result.png)
 
