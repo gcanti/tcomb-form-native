@@ -1,0 +1,36 @@
+{
+  "name": "tcomb-form-native",
+  "version": "0.1.0",
+  "description": "react-native powered UI library for developing forms writing less code",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gcanti/tcomb-form-native.git"
+  },
+  "author": "Giulio Canti <giulio.canti@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gcanti/tcomb-form-native/issues"
+  },
+  "homepage": "https://github.com/gcanti/tcomb-form-native",
+  "peerDependencies": {
+    "react-native": "^0.1.0",
+    "tcomb-validation": "^1.0.2"
+  },
+  "tags": [
+    "form",
+    "forms",
+    "react",
+    "react-native",
+    "react-component"
+  ],
+  "keywords": [
+    "form",
+    "forms",
+    "react",
+    "react-native",
+    "react-component"
+  ]
+}
