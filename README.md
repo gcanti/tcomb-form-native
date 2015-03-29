@@ -178,6 +178,20 @@ var Person = t.struct({
 
 Booleans are displayed as `SwitchIOS`s.
 
+### Dates
+
+In order to create a date field, use the `t.Dat` type:
+
+```js
+var Person = t.struct({
+  name: t.Str,
+  surname: t.Str,
+  email: t.maybe(t.Str),
+  age: t.Num,
+  birthDate: t.Dat // a date field
+});
+```
+
 ### Enums
 
 In order to create an enum field, use the `t.enums` combinator:
@@ -309,9 +323,11 @@ var options = {
 
 ## Textbox component
 
+Implementation: `TextInput`
+
 **Tech note.** Values containing only white spaces are converted to `null`.
 
-### Placeholders
+### Placeholder
 
 You can set the placeholder with the `placeholder` option:
 
@@ -325,7 +341,7 @@ var options = {
 };
 ```
 
-### Labels
+### Label
 
 You can set the label with the `label` option:
 
@@ -339,7 +355,7 @@ var options = {
 };
 ```
 
-### Help messages
+### Help message
 
 You can set a help message with the `help` option:
 
@@ -401,15 +417,61 @@ The following standard options are available (see http://facebook.github.io/reac
 
 ## Checkbox component
 
-Coming soon.
+Implementation: `SwitchIOS`
+
+The following options are similar to the `Textbox` component's ones:
+
+- `label`
+- `help`
+- `error`
+
+### Other standard options
+
+The following standard options are available (see http://facebook.github.io/react-native/docs/switchios.html):
+
+- `disabled`
+- `onTintColor`
+- `thumbTintColor`
+- `tintColor`
 
 ## Select component
 
-Coming soon.
+Implementation: `PickerIOS`
+
+The following options are similar to the `Textbox` component's ones:
+
+- `label`
+- `help`
+- `error`
 
 ## DatePicker component
 
-Coming soon.
+Implementation: `DatePickerIOS`
+
+### Example
+
+```js
+var Person = t.struct({
+  name: t.Str,
+  birthDate: t.Dat
+});
+```
+
+The following options are similar to the `Textbox` component's ones:
+
+- `label`
+- `help`
+- `error`
+
+### Other standard options
+
+The following standard options are available (see http://facebook.github.io/react-native/docs/datepickerios.html):
+
+- `maximumDate`,
+- `minimumDate`,
+- `minuteInterval`,
+- `mode`,
+- `timeZoneOffsetInMinutes`
 
 # Customization
 
