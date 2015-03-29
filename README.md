@@ -4,25 +4,29 @@
 npm install tcomb-form-native
 ```
 
-# Domain Driven Forms
+### Domain Driven Forms
 
 The [tcomb library](https://github.com/gcanti/tcomb) provides a concise but expressive way to define domain models in JavaScript.
 
 The [tcomb-validation library](https://github.com/gcanti/tcomb-validation) builds on tcomb, providing validation functions for tcomb domain models.
 
-This library builds on those two and on the awesome react-native.
+This library builds on those two and the awesome react-native.
 
-# Benefits
+### Benefits
 
-With tcomb-form-native you simply call `<Form type={Model} />` to generate a form based on that domain model. What does this get you?
+With **tcomb-form-native** you simply call `<Form type={Model} />` to generate a form based on that domain model. What does this get you?
 
 1. Write a lot less code
 2. Usability and accessibility for free (automatic labels, inline validation, etc)
 3. No need to update forms when domain model changes
 
-# JSON Schema support
+### JSON Schema support
 
-You can convert a JSON Schema to a tcomb type thanks to the [tcomb-json-schema](https://github.com/gcanti/tcomb-json-schema) library.
+JSON Schemas are also supported via the (tiny) [tcomb-json-schema library](https://github.com/gcanti/tcomb-json-schema).
+
+### Pluggable look and feel
+
+The look and feel is customizable via react-native stylesheets and *templates* (see documentation).
 
 # Example
 
@@ -33,16 +37,11 @@ You can convert a JSON Schema to a tcomb type thanks to the [tcomb-json-schema](
 
 var React = require('react-native');
 var t = require('tcomb-form-native');
-var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-} = React;
+var { AppRegistry, StyleSheet, Text, View, TouchableHighlight } = React;
 
 var Form = t.form.Form;
 
+// here we are: define your domain model
 var Person = t.struct({
   name: t.Str,              // a required string
   surname: t.maybe(t.Str),  // an optional string
@@ -50,20 +49,22 @@ var Person = t.struct({
   rememberMe: t.Bool        // a boolean
 });
 
-var options = {}; // optional rendering options...
+var options = {}; // optional rendering options (see documentation)
 
 var AwesomeProject = React.createClass({
 
   onPress: function () {
+    // call getValue() to get the values of the form
     var value = this.refs.form.getValue();
-    if (value) {
-      console.log(value);
+    if (value) { // if validation fails, value will be null
+      console.log(value); // value here is an instance of Person
     }
   },
 
   render: function() {
     return (
       <View style={styles.container}>
+        {/* display */}
         <Form
           ref="form"
           type={Person}
@@ -109,23 +110,32 @@ var styles = StyleSheet.create({
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
 ```
 
-### Result:
+**Output:**
 
-(Labels are auto generated)
+(Labels are automatically generated)
 
 ![Result](docs/images/result.png)
 
-### Result after a validation error:
+**Ouput after a validation error:**
 
 ![Result after a validation error](docs/images/validation.png)
 
-# Docs
+# Types
 
-## Types
+### Required field
+
+By default fields are required:
+
+```js
+var Person = t.struct({
+  name: t.Str,    // a required string
+  surname: t.Str  // a required string
+});
+```
 
 ### Optional field
 
-To create an optional field wrap the field type with `t.maybe`:
+In order to create an optional field, wrap the field type with the `t.maybe` combinator:
 
 ```js
 var Person = t.struct({
@@ -135,11 +145,11 @@ var Person = t.struct({
 });
 ```
 
-The label postfix ` (optional)` is automatically generated.
+The postfix `" (optional)"` is automatically added to optional fields.
 
-### Numeric field
+### Numbers
 
-To create a numeric field use `t.Num`:
+In order to create a numeric field, use the `t.Num` type:
 
 ```js
 var Person = t.struct({
@@ -150,11 +160,11 @@ var Person = t.struct({
 });
 ```
 
-tcomb-form-native converts numbers to / from strings.
+tcomb-form-native will convert automatically numbers to / from strings.
 
-### Boolean field
+### Booleans
 
-To create a boolean field use `t.Bool`:
+In order to create a boolean field, use the `t.Bool` type:
 
 ```js
 var Person = t.struct({
@@ -166,11 +176,11 @@ var Person = t.struct({
 });
 ```
 
-Booleans are displayed as switches.
+Booleans are displayed as `SwitchIOS`s.
 
-### Enum field
+### Enums
 
-To create an enum field use `t.enums`:
+In order to create an enum field, use the `t.enums` combinator:
 
 ```js
 var Gender = t.enums({
@@ -184,11 +194,11 @@ var Person = t.struct({
   email: t.maybe(t.Str),
   age: t.Num,
   rememberMe: t.Bool,
-  gender: Gender // enums field
+  gender: Gender // enum
 });
 ```
 
-enums are displayed as `PickerIOS`s.
+Enums are displayed as `PickerIOS`s.
 
 ### Subtypes
 
@@ -198,7 +208,7 @@ A *predicate* is a function with the following signature:
 (x: any) => boolean
 ```
 
-You can refine a type with `t.subtype(type, predicate)`:
+You can refine a type with the `t.subtype(type, predicate)` combinator:
 
 ```js
 // a type representing positive numbers
@@ -218,19 +228,24 @@ var Person = t.struct({
 
 Subtypes allow you to express any custom validation with a simple predicate.
 
-## Options
+# Rendering options
 
-To customize the form look and feel passing a `options` prop to the `Form` component:
+In order to customize the look and feel, use an `options` prop:
 
 ```js
 <Form type={Model} options={options} />
 ```
 
-### Fieldset options
+## Form component
 
-#### Automatically generated placeholders
+### Labels
 
-Pass the option `auto: 'placeholders'` to generate default placeholders:
+By default labels are automatically generated. You can turn off this behaviour or override the default labels
+on field basis.
+
+### Placeholders
+
+In order to automatically generate default placeholders, use the option `auto: 'placeholders'`:
 
 ```js
 var options = {
@@ -242,7 +257,7 @@ var options = {
 
 ![Placeholders](docs/images/placeholders.png)
 
-Or `auto: 'none'` if you don't want neither labels nor placeholders.
+Set `auto: 'none'` if you don't want neither labels nor placeholders.
 
 ```js
 var options = {
@@ -250,9 +265,9 @@ var options = {
 };
 ```
 
-#### Fields order
+### Fields order
 
-You can order the fields with the `order` option:
+You can sort the fields with the `order` option:
 
 ```js
 var options = {
@@ -260,7 +275,7 @@ var options = {
 };
 ```
 
-#### Default values
+### Default values
 
 You can set the default values passing a `value` prop to the `Form` component:
 
@@ -275,7 +290,7 @@ var value = {
 <Form type={Model} value={value} />
 ```
 
-#### Fields configuration
+### Fields configuration
 
 You can configure each field with the `fields` option:
 
@@ -292,11 +307,11 @@ var options = {
 });
 ```
 
-### Textbox options
+## Textbox component
 
 **Tech note.** Values containing only white spaces are converted to `null`.
 
-#### Placeholder
+### Placeholders
 
 You can set the placeholder with the `placeholder` option:
 
@@ -304,13 +319,13 @@ You can set the placeholder with the `placeholder` option:
 var options = {
   fields: {
     name: {
-      placeholder: 'Type your text here'
+      placeholder: 'Your placeholder here'
     }
   }
 };
 ```
 
-#### Label
+### Labels
 
 You can set the label with the `label` option:
 
@@ -318,13 +333,13 @@ You can set the label with the `label` option:
 var options = {
   fields: {
     name: {
-      label: 'My label'
+      label: 'Insert your name'
     }
   }
 };
 ```
 
-#### Help
+### Help messages
 
 You can set a help message with the `help` option:
 
@@ -340,9 +355,34 @@ var options = {
 
 ![Help](docs/images/help.png)
 
-#### Standard options
+### Error messages
 
-The following "standard" options are also available (see http://facebook.github.io/react-native/docs/textinput.html#content):
+You can set a custom error message with the `error` option:
+
+```js
+var options = {
+  fields: {
+    email: {
+      error: 'Insert a valid email'
+    }
+  }
+};
+```
+
+![Help](docs/images/error.png)
+
+tcomb-form-native will show the error message when the field validation fails.
+You can also use a function with the following signature:
+
+```js
+(value: any) => string
+```
+
+where the `value` param contains the current field value. The value returned by the function will be used as message.
+
+### Other standard options
+
+The following standard options are available (see http://facebook.github.io/react-native/docs/textinput.html):
 
 - `autoCapitalize`
 - `autoCorrect`
@@ -359,11 +399,25 @@ The following "standard" options are also available (see http://facebook.github.
 - `placeholderTextColor`
 - `selectionState`
 
-### Checkbox options
+## Checkbox component
 
 Coming soon.
 
-### Select options
+## Select component
+
+Coming soon.
+
+# Customization (skins)
+
+## Stylesheets
+
+Coming soon.
+
+## Custom templates
+
+Coming soon.
+
+## Custom components
 
 Coming soon.
 
