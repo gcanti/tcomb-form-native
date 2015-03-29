@@ -407,6 +407,10 @@ Coming soon.
 
 Coming soon.
 
+## DatePicker component
+
+Coming soon.
+
 # Customization
 
 ## Stylesheets
