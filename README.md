@@ -188,7 +188,7 @@ var Person = t.struct({
 });
 ```
 
-enums are displayed as `PickerIOS`.
+enums are displayed as `PickerIOS`s.
 
 ### Subtypes
 
@@ -358,6 +358,14 @@ The following "standard" options are also available (see http://facebook.github.
 - `onSubmitEditing`
 - `placeholderTextColor`
 - `selectionState`
+
+### Checkbox options
+
+Coming soon.
+
+### Select options
+
+Coming soon.
 
 # License
 
