@@ -28,6 +28,10 @@ JSON Schemas are also supported via the (tiny) [tcomb-json-schema library](https
 
 The look and feel is customizable via react-native stylesheets and *templates* (see documentation).
 
+### Screencast
+
+http://react.rocks/example/tcomb-form-native
+
 # Example
 
 ```js
