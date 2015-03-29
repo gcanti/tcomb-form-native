@@ -407,7 +407,7 @@ Coming soon.
 
 Coming soon.
 
-# Customization (skins)
+# Customization
 
 ## Stylesheets
 
