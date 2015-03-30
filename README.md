@@ -196,6 +196,8 @@ var Person = t.struct({
 });
 ```
 
+Dates are displayed as `DatePickerIOS`s.
+
 ### Enums
 
 In order to create an enum field, use the `t.enums` combinator:
@@ -477,19 +479,60 @@ The following standard options are available (see http://facebook.github.io/reac
 - `mode`,
 - `timeZoneOffsetInMinutes`
 
-# Customization
+# Customizations
 
 ## Stylesheets
 
-Coming soon.
+tcomb-form-native comes with a default style. You can customize the look and feel by setting another stylesheet:
 
-## Custom templates
+```js
+var t = require('tcomb-form-native');
 
-Coming soon.
+// define a stylesheet (see lib/stylesheets/bootstrap for an example)
+var stylesheet = {...};
 
-## Custom components
+// override the default stylesheet
+t.Form.stylesheet = stylesheet;
+```
 
-Coming soon.
+## Templates
+
+tcomb-form-native comes with a default layout, i.e. a bunch of templates, one for each component.
+When changing the stylesheet is not enough, you can customize the layout by setting other templates:
+
+```js
+var t = require('tcomb-form-native');
+
+// define the templates (see lib/templates/bootstrap for an example)
+var templates = {...};
+
+// override the default layout
+t.Form.templates = templates;
+```
+
+A template is a function with the following signature:
+
+```
+(locals: Object) => ReactElement
+```
+
+where `locals` is an object contaning the "recipe" for rendering the input and it's built for you by tcomb-form-native.
+Let's see an example: the `locals` object passed in the `checkbox` template:
+
+```js
+{
+  stylesheet: Object, // the styles to be applied
+  hasError: boolean,  // true if there is a validation error
+  error: ?string,     // the optional error message to be displayed
+  label: string,      // the label to be displayed
+  help: ?string,      // the optional help message to be displayed
+  value: boolean,     // the current value of the checkbox
+  onChange: Function, // the event handler to be called when the value changes
+
+  ...other SwitchIOS standard options here...
+
+}
+```
 
 # License
 
