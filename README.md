@@ -450,6 +450,40 @@ The following options are similar to the `Textbox` component's ones:
 - `help`
 - `error`
 
+### `nullOption` option
+
+You can customize the null option with the `nullOption` option:
+
+```js
+var options = {
+  fields: {
+    gender: {
+      nullOption: {value: '', label: 'Choose your gender'}
+    }
+  }
+};
+```
+
+You can remove the null option setting the `nullOption` option to `false`.
+
+**Warning**: when you set `nullOption = false` you must also set the Form's `value` prop for the select field.
+
+**Tech note.** A value equal to `nullOption.value` (default `''`) is converted to `null`.
+
+### Options order
+
+You can sort the options with the `order` option:
+
+```js
+var options = {
+  fields: {
+    gender: {
+      order: 'asc' // or 'desc'
+    }
+  }
+};
+```
+
 ## DatePicker component
 
 Implementation: `DatePickerIOS`
