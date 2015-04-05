@@ -412,13 +412,17 @@ The following standard options are available (see http://facebook.github.io/reac
 - `bufferDelay`
 - `clearButtonMode`
 - `editable`
+- `enablesReturnKeyAutomatically`
 - `keyboardType`
 - `multiline`
 - `onBlur`
 - `onEndEditing`
 - `onFocus`
 - `onSubmitEditing`
+- `password`
 - `placeholderTextColor`
+- `returnKeyType`
+- `secureTextEntry`
 - `selectionState`
 
 ## Checkbox component

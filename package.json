@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/gcanti/tcomb-form-native",
   "peerDependencies": {
-    "react-native": "^0.3.1",
+    "react-native": "^0.3.4",
     "tcomb-validation": "^1.0.3"
   },
   "devDependencies": {
