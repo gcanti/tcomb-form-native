@@ -1,10 +1,10 @@
 {
   "name": "tcomb-form-native",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "react-native powered UI library for developing forms writing less code",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,11 @@
   },
   "homepage": "https://github.com/gcanti/tcomb-form-native",
   "peerDependencies": {
-    "react-native": "^0.3.4",
+    "react-native": "^0.4.0",
     "tcomb-validation": "^1.0.3"
   },
   "devDependencies": {
+    "tap-spec": "^3.0.0",
     "tape": "^3.5.0"
   },
   "tags": [

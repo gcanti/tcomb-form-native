@@ -1,3 +1,7 @@
+v0.1.7
+
+- upgrade to react-native v0.4.0
+
 v0.1.6
 
 - upgrade to react-native v0.3.4

@@ -422,6 +422,7 @@ The following standard options are available (see http://facebook.github.io/reac
 - `password`
 - `placeholderTextColor`
 - `returnKeyType`
+- `selectTextOnFocus`
 - `secureTextEntry`
 - `selectionState`
 
@@ -570,6 +571,12 @@ Let's see an example: the `locals` object passed in the `checkbox` template:
   ...other SwitchIOS standard options here...
 
 }
+```
+
+# Tests
+
+```
+npm test
 ```
 
 # License
