@@ -531,7 +531,7 @@ var t = require('tcomb-form-native');
 var stylesheet = {...};
 
 // override the default stylesheet
-t.Form.stylesheet = stylesheet;
+t.form.Form.stylesheet = stylesheet;
 ```
 
 ## Templates
@@ -546,7 +546,7 @@ var t = require('tcomb-form-native');
 var templates = {...};
 
 // override the default layout
-t.Form.templates = templates;
+t.form.Form.templates = templates;
 ```
 
 A template is a function with the following signature:

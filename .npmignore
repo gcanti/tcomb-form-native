@@ -4,5 +4,6 @@ node_modules
 test
 docs
 AwesomeProject.xcodeproj
+AwesomeProjectTests
 index.ios.js
 iOS
