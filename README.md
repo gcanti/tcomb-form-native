@@ -584,14 +584,32 @@ var t = require('tcomb-form-native');
 // define a stylesheet (see lib/stylesheets/bootstrap for an example)
 var stylesheet = {...};
 
-// override the default stylesheet
+// override globally the default stylesheet
 t.form.Form.stylesheet = stylesheet;
 ```
+
+You can also override the stylesheet locally:
+
+```js
+var Person = t.struct({
+  name: t.Str
+});
+
+var options = {
+  fields: {
+    name: {
+      stylesheet: myCustomStylesheet
+    }
+  }
+};
+```
+
+For a complete example see the default stylesheet https://github.com/gcanti/tcomb-form-native/blob/master/lib/stylesheets/bootstrap.js.
 
 ## Templates
 
 tcomb-form-native comes with a default layout, i.e. a bunch of templates, one for each component.
-When changing the stylesheet is not enough, you can customize the layout by setting other templates:
+When changing the stylesheet is not enough, you can customize the layout by setting custom templates:
 
 ```js
 var t = require('tcomb-form-native');
@@ -599,8 +617,38 @@ var t = require('tcomb-form-native');
 // define the templates (see lib/templates/bootstrap for an example)
 var templates = {...};
 
-// override the default layout
+// override globally the default layout
 t.form.Form.templates = templates;
+```
+
+You can also override the template locally:
+
+```js
+var Person = t.struct({
+  name: t.Str
+});
+
+function myCustomTemplate(locals) {
+
+  var containerStyle = {...};
+  var labelStyle = {...};
+  var textboxStyle = {...};
+
+  return (
+    <View style={containerStyle}>
+      <Text style={labelStyle}>{locals.label}</Text>
+      <TextInput style={textboxStyle} />
+    </View>
+  );
+}
+
+var options = {
+  fields: {
+    name: {
+      template: myCustomTemplate
+    }
+  }
+};
 ```
 
 A template is a function with the following signature:
@@ -622,10 +670,12 @@ Let's see an example: the `locals` object passed in the `checkbox` template:
   value: boolean,     // the current value of the checkbox
   onChange: Function, // the event handler to be called when the value changes
 
-  ...other SwitchIOS standard options here...
+  ...other input options here...
 
 }
 ```
+
+For a complete example see the default template https://github.com/gcanti/tcomb-form-native/blob/master/lib/templates/bootstrap.js.
 
 ## Transformers
 
@@ -682,9 +732,69 @@ var value = {
 var options = {
   fields: {
     search: {
-      factory: t.form.Textbox,
+      factory: t.form.Textbox, // tell tcomb-react-native to use the same component for textboxes
       transformer: listTransformer,
       help: 'Keywords are separated by spaces'
+    }
+  }
+};
+```
+
+## Custom factories
+
+You can pack together style, template (and transformers) in a custom component and then you can use it with the `factory` option:
+
+```js
+var Component = t.form.Component;
+
+// extend the base Component
+class MyComponent extends Component {
+
+  // this is the only required method to implement
+  getTemplate() {
+    // define here your custom template
+    return function (locals) {
+
+      //return ... jsx ...
+
+    };
+  }
+
+  // you can optionally override the default getLocals method
+  // it will provide the locals param to your template
+  getLocals() {
+
+    // in locals you'll find the default locals:
+    // - path
+    // - error
+    // - hasError
+    // - label
+    // - onChange
+    // - stylesheet
+    var locals = super.getLocals();
+
+    // add here your custom locals
+
+    return locals;
+  }
+
+
+}
+
+// as example of transformer: this is the default transformer for textboxes
+MyComponent.transformer = {
+  format: value => Nil.is(value) ? null : value,
+  parse: value => (t.Str.is(value) && value.trim() === '') || Nil.is(value) ? null : value
+};
+
+var Person = t.struct({
+  name: t.Str
+});
+
+var options = {
+  fields: {
+    name: {
+      factory: MyComponent
     }
   }
 };
