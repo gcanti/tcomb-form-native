@@ -124,6 +124,60 @@ AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
 
 ![Result after a validation error](docs/images/validation.png)
 
+# API
+
+## `getValue()`
+
+Returns `null` if the validation failed, an instance of your model otherwise.
+
+> **Note**. Calling `getValue` will cause the validation of all the fields of the form, including some side effects like highlighting the errors.
+
+## `validate()`
+
+Returns a `ValidationResult` (see [tcomb-validation](https://github.com/gcanti/tcomb-validation) for a reference documentation).
+
+## How to get access to a field
+
+You can get access to a field with the `getComponent(path)` API:
+
+```js
+var Person = t.struct({
+  name: t.Str,
+  surname: t.maybe(t.Str),
+  age: t.Num,
+  rememberMe: t.Bool
+});
+
+var AwesomeProject = React.createClass({
+
+  componentDidMount() {
+    // give focus to the name textbox
+    this.refs.form.getComponent('name').refs.input.focus();
+  },
+
+  onPress: function () {
+    var value = this.refs.form.getValue();
+    if (value) {
+      console.log(value);
+    }
+  },
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <Form
+          ref="form"
+          type={Person}
+        />
+        <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Save</Text>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+});
+```
+
 # Types
 
 ### Required field
