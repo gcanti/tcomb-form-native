@@ -10,6 +10,17 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.0
+
+- **New Feature**
+    + getComponent API fix #19
+    + get access to the native input contained in tcomb-form-native's component fix #24
+- **Breaking Change**
+    + Inputs refactoring, this affects how to build custom inputs #12
+- **Internal**
+    + Textbox is no more a controlled input #26
+    + Add eslint
+
 ## v0.1.9
 
 - **Internal**

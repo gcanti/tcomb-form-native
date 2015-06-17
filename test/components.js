@@ -7,7 +7,7 @@ var tape = require('tape');
 var t = require('tcomb');
 var bootstrap = require('../lib/templates/bootstrap');
 
-var core = require('../lib/core');
+var core = require('../lib/components');
 
 var ctx = {
   auto: 'labels',
@@ -330,7 +330,7 @@ tape('Textbox', function (tape) {
         type: t.Str,
         options: {},
         ctx: ctx
-      }).getLocals().template,
+      }).getTemplate(),
       bootstrap.textbox,
       'default template should be bootstrap.textbox');
 
@@ -341,7 +341,7 @@ tape('Textbox', function (tape) {
         type: t.Str,
         options: {template: template},
         ctx: ctx
-      }).getLocals().template,
+      }).getTemplate(),
       template,
       'should handle template option');
 
@@ -568,7 +568,7 @@ tape('Select', function (tape) {
         type: Country,
         options: {},
         ctx: ctx
-      }).getLocals().template,
+      }).getTemplate(),
       bootstrap.select,
       'default template should be bootstrap.select');
 
@@ -579,7 +579,7 @@ tape('Select', function (tape) {
         type: Country,
         options: {template: template},
         ctx: ctx
-      }).getLocals().template,
+      }).getTemplate(),
       template,
       'should handle template option');
 
@@ -871,7 +871,7 @@ tape('Checkbox', function (tape) {
         type: t.Bool,
         options: {},
         ctx: ctx
-      }).getLocals().template,
+      }).getTemplate(),
       bootstrap.checkbox,
       'default template should be bootstrap.checkbox');
 
@@ -882,7 +882,7 @@ tape('Checkbox', function (tape) {
         type: t.Bool,
         options: {template: template},
         ctx: ctx
-      }).getLocals().template,
+      }).getTemplate(),
       template,
       'should handle template option');
 
@@ -1084,7 +1084,7 @@ tape('DatePicker', function (tape) {
         options: {},
         ctx: ctx,
         value: date
-      }).getLocals().template,
+      }).getTemplate(),
       bootstrap.datepicker,
       'default template should be bootstrap.datepicker');
 
@@ -1096,7 +1096,7 @@ tape('DatePicker', function (tape) {
         options: {template: template},
         ctx: ctx,
         value: date
-      }).getLocals().template,
+      }).getTemplate(),
       template,
       'should handle template option');
 
