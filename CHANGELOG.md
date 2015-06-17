@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.1.9
+
+- **Internal**
+    + upgrade to react-native v0.5.0 fix #22
+
 ## v0.1.8
 
 - **Internal**
