@@ -627,6 +627,69 @@ Let's see an example: the `locals` object passed in the `checkbox` template:
 }
 ```
 
+## Transformers
+
+Say you want a search textbox which accepts a list of keywords separated by spaces:
+
+```js
+var Search = t.struct({
+  search: t.list(t.Str)
+});
+```
+
+tcomb-form by default will render the `search` field as a list. In order to render a textbox you have to override the default behaviour with the factory option:
+
+```js
+var options = {
+  fields: {
+    search: {
+      factory: t.form.Textbox
+    }
+  }
+};
+```
+
+There is a problem though: a textbox handle only strings so we need a way to transform a list in a string and a string in a list: a `Transformer` deals with serialization / deserialization of data and has the following interface:
+
+```js
+var Transformer = t.struct({
+  format: t.Func, // from value to string, it must be idempotent
+  parse: t.Func   // from string to value
+});
+```
+
+A basic transformer implementation for the search textbox:
+
+```js
+var listTransformer = {
+  format: function (value) {
+    return Array.isArray(value) ? value.join(' ') : value;
+  },
+  parse: function (str) {
+    return str ? str.split(' ') : [];
+  }
+};
+```
+
+Now you can handle lists using the transformer option:
+
+```js
+// example of initial value
+var value = {
+  search: ['climbing', 'yosemite']
+};
+
+var options = {
+  fields: {
+    search: {
+      factory: t.form.Textbox,
+      transformer: listTransformer,
+      help: 'Keywords are separated by spaces'
+    }
+  }
+};
+```
+
 # Tests
 
 ```
