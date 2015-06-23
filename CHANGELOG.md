@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.1
+
+- **Internal**
+    + less padding to textboxes, #31
+
 ## v0.2.0
 
 - **New Feature**
