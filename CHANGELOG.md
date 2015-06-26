@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.2
+
+- **Internal**
+    + Recommend making peerDependencies more flexible #30
+
 ## v0.2.1
 
 - **Internal**
