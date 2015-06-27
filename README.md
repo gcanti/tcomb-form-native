@@ -136,6 +136,133 @@ Returns `null` if the validation failed, an instance of your model otherwise.
 
 Returns a `ValidationResult` (see [tcomb-validation](https://github.com/gcanti/tcomb-validation) for a reference documentation).
 
+## Adding a default value and listen to changes
+
+The `Form` component behaves like a [controlled component](https://facebook.github.io/react/docs/forms.html):
+
+```js
+var Person = t.struct({
+  name: t.Str,           
+  surname: t.maybe(t.Str)
+});
+
+var AwesomeProject = React.createClass({
+
+  getInitialState() {
+    return {
+      value: {
+        name: 'Giulio',
+        surname: 'Canti'
+      }
+    };
+  },
+
+  onChange(value) {
+    this.setState({value});
+  },
+
+  onPress: function () {
+    var value = this.refs.form.getValue();
+    if (value) {
+      console.log(value);
+    }
+  },
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <Form
+          ref="form"
+          type={Person}
+          value={this.state.value}
+          onChange={this.onChange}
+        />
+        <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Save</Text>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+});
+```
+
+The `onChange` handler has the following signature:
+
+```
+(raw: any, path: Array<string | number>) => void
+```
+
+where
+
+- `raw` contains the current raw value of the form (can be an invalid value for your model)
+- `path` is the path to the field triggering the change
+
+> **Warning**. tcomb-form-native uses `shouldComponentUpdate` aggressively. In order to ensure that tcomb-form-native detect any change to `type`, `options` or `value` props you have to change references:
+
+## Disable a field based on another field's value
+
+```js
+var Type = t.struct({
+  disable: t.Bool, // if true, name field will be disabled
+  name: t.Str
+});
+
+// see the "Rendering options" section in this guide
+var options = {
+  fields: {
+    name: {}
+  }
+};
+
+var AwesomeProject = React.createClass({
+
+  getInitialState() {
+    return {
+      options: options,
+      value: null
+    };
+  },
+
+  onChange(value) {
+    // tcomb immutability helpers
+    // https://github.com/gcanti/tcomb/blob/master/GUIDE.md#updating-immutable-instances
+    var options = t.update(this.state.options, {
+      fields: {
+        name: {
+          editable: {'$set': !value.disable}
+        }
+      }
+    });
+    this.setState({options: options, value: value});
+  },
+
+  onPress: function () {
+    var value = this.refs.form.getValue();
+    if (value) {
+      console.log(value);
+    }
+  },
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <Form
+          ref="form"
+          type={Type}
+          options={this.state.options}
+          value={this.state.value}
+          onChange={this.onChange}
+        />
+        <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Save</Text>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+
+});
+```
+
 ## How to get access to a field
 
 You can get access to a field with the `getComponent(path)` API:
