@@ -11,7 +11,7 @@ function install(options) {
 
   require.extensions[options.extension || '.js'] = function(module, filename) {
     var src = fs.readFileSync(filename, {encoding: 'utf8'});
-    if (typeof options.additionalTransform == 'function') {
+    if (typeof options.additionalTransform === 'function') {
       src = options.additionalTransform(src);
     }
     try {

@@ -508,7 +508,7 @@ tape('Select', function (tape) {
       false,
       'after a validation error hasError should be true');
 
-    var select = new Select({
+    select = new Select({
       type: Country,
       options: {},
       ctx: ctx,
@@ -815,7 +815,7 @@ tape('Checkbox', function (tape) {
       false,
       'after a validation error hasError should be true');
 
-    var checkbox = new Checkbox({
+    checkbox = new Checkbox({
       type: True,
       options: {},
       ctx: ctx,

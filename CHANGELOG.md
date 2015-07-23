@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.3
+
+- **New Feature**
+    + add auto option override for specific field #41
+
 ## v0.2.2
 
 - **Internal**
