@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.4
+
+- **Bug Fix**
+    + the default date for DatePicker is reflected in the UI but not in the `getValue()` API #42
+
 ## v0.2.3
 
 - **New Feature**
