@@ -10,6 +10,13 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.5
+
+- **New Feature**
+    + Add `required` field to i18n, fix #46
+- **Internal**
+    + upgrade to react-native v0.9
+
 ## v0.2.4
 
 - **Bug Fix**

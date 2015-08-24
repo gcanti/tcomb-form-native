@@ -5,7 +5,8 @@ var stylesheet = require('./lib/stylesheets/bootstrap');
 t.form.Form.templates = templates;
 t.form.Form.stylesheet = stylesheet;
 t.form.Form.i18n = {
-  optional: ' (optional)'
+  optional: ' (optional)',
+  required: ''
 };
 
 module.exports = t;

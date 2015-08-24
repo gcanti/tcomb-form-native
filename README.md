@@ -142,7 +142,7 @@ The `Form` component behaves like a [controlled component](https://facebook.gith
 
 ```js
 var Person = t.struct({
-  name: t.Str,           
+  name: t.Str,
   surname: t.maybe(t.Str)
 });
 
@@ -331,6 +331,15 @@ var Person = t.struct({
 ```
 
 The postfix `" (optional)"` is automatically added to optional fields.
+
+You can customise the postfix value or setting a postfix for required fields:
+
+```js
+t.form.Form.i18n = {
+  optional: '',
+  required: ' (required)' // inverting the behaviour: adding a postfix to the required fields
+};
+```
 
 ### Numbers
 
