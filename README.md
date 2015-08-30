@@ -1,3 +1,8 @@
+# IMPORTANT!
+
+This project is compatible with react-native ^0.9.0. I can't upgrade to react-native >= 0.10.0.
+If you need a more recent version, please fork the repo or submit a PR.
+
 # Setup
 
 ```

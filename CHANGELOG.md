@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.6
+
+- **Internal**
+    - pin react-native version to 0.9
+
 ## v0.2.5
 
 - **New Feature**
