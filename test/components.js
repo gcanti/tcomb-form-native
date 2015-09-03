@@ -13,19 +13,19 @@ var ctx = {
   auto: 'labels',
   label: 'ctxDefaultLabel',
   templates: bootstrap,
-  i18n: {optional: ' (optional)'}
+  i18n: {optional: ' (optional)', required: ''}
 };
 var ctxPlaceholders = {
   auto: 'placeholders',
   label: 'ctxDefaultLabel',
   templates: bootstrap,
-  i18n: {optional: ' (optional)'}
+  i18n: {optional: ' (optional)', required: ''}
 };
 var ctxNone = {
   auto: 'none',
   label: 'ctxDefaultLabel',
   templates: bootstrap,
-  i18n: {optional: ' (optional)'}
+  i18n: {optional: ' (optional)', required: ''}
 };
 
 tape('Textbox', function (tape) {
