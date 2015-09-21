@@ -724,7 +724,7 @@ var stylesheet = {...};
 t.form.Form.stylesheet = stylesheet;
 ```
 
-You can also override the stylesheet locally:
+You can also override the stylesheet locally for selected fields:
 
 ```js
 var Person = t.struct({
@@ -737,6 +737,18 @@ var options = {
       stylesheet: myCustomStylesheet
     }
   }
+};
+```
+
+Or per form:
+
+```js
+var Person = t.struct({
+  name: t.Str
+});
+
+var options = {
+  stylesheet: myCustomStylesheet
 };
 ```
 
