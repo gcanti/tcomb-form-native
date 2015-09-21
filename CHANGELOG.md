@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.7
+
+- **Internal**
+    - support react-native versions greater than 0.9
+
 ## v0.2.6
 
 - **Internal**
