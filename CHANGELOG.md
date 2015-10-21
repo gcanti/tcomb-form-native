@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.2.8
+
+- **New Feature**
+    - Pass in config options to custom template through options, fix #63
+
 ## v0.2.7
 
 - **Internal**
