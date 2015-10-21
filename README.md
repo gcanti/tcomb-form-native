@@ -817,6 +817,7 @@ Let's see an example: the `locals` object passed in the `checkbox` template:
   help: ?string,      // the optional help message to be displayed
   value: boolean,     // the current value of the checkbox
   onChange: Function, // the event handler to be called when the value changes
+  config: Object,     // an optional object to pass configuration options to the new template
 
   ...other input options here...
 
