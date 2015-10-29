@@ -604,7 +604,9 @@ The following standard options are available (see http://facebook.github.io/reac
 - `editable`
 - `enablesReturnKeyAutomatically`
 - `keyboardType`
+- `maxLength`
 - `multiline`
+- `numberOfLines`
 - `onBlur`
 - `onEndEditing`
 - `onFocus`
@@ -615,6 +617,9 @@ The following standard options are available (see http://facebook.github.io/reac
 - `selectTextOnFocus`
 - `secureTextEntry`
 - `selectionState`
+- `textAlign`
+- `textAlignVertical`
+- `underlineColorAndroid`
 
 ## Checkbox component
 
