@@ -4,7 +4,7 @@
 require('./node-jsx').install({harmony: true});
 
 var tape = require('tape');
-var t = require('tcomb');
+var t = require('tcomb-validation');
 var bootstrap = require('../lib/templates/bootstrap');
 
 var core = require('../lib/components');
