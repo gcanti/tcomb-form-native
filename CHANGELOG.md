@@ -10,6 +10,21 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.3.0
+
+- **Breaking Change**
+    - Upgrade tcomb-validation to v2, fix #68
+
+      Do not worry: the migration path should be seamless since the major version bump was caused by dropping the support for bower (i.e. types and combinators are the same).
+Just notice that the short type alias (`t.Str`, `t.Num`, ...) are deprecated in favour of the long ones (`t.String`, `t.Number`, ...) and the `subtype` combinator has now a more descriptive alias `refinement`.
+- **Bug Fix**
+    - amend struct onChange, fix #70
+
+    the previous code would lead to bugs regarding error messages when the
+    type is a subtype of a struct, https://github.com/gcanti/tcomb-form/issues/235
+- **Internal**
+    - move peer dependencies to dependencies
+
 ## v0.2.8
 
 - **New Feature**
