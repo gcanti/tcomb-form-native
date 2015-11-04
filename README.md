@@ -47,10 +47,10 @@ var Form = t.form.Form;
 
 // here we are: define your domain model
 var Person = t.struct({
-  name: t.Str,              // a required string
-  surname: t.maybe(t.Str),  // an optional string
-  age: t.Num,               // a required number
-  rememberMe: t.Bool        // a boolean
+  name: t.String,              // a required string
+  surname: t.maybe(t.String),  // an optional string
+  age: t.Number,               // a required number
+  rememberMe: t.Boolean        // a boolean
 });
 
 var options = {}; // optional rendering options (see documentation)
@@ -142,8 +142,8 @@ The `Form` component behaves like a [controlled component](https://facebook.gith
 
 ```js
 var Person = t.struct({
-  name: t.Str,
-  surname: t.maybe(t.Str)
+  name: t.String,
+  surname: t.maybe(t.String)
 });
 
 var AwesomeProject = React.createClass({
@@ -203,8 +203,8 @@ where
 
 ```js
 var Type = t.struct({
-  disable: t.Bool, // if true, name field will be disabled
-  name: t.Str
+  disable: t.Boolean, // if true, name field will be disabled
+  name: t.String
 });
 
 // see the "Rendering options" section in this guide
@@ -269,10 +269,10 @@ You can get access to a field with the `getComponent(path)` API:
 
 ```js
 var Person = t.struct({
-  name: t.Str,
-  surname: t.maybe(t.Str),
-  age: t.Num,
-  rememberMe: t.Bool
+  name: t.String,
+  surname: t.maybe(t.String),
+  age: t.Number,
+  rememberMe: t.Boolean
 });
 
 var AwesomeProject = React.createClass({
@@ -313,8 +313,8 @@ By default fields are required:
 
 ```js
 var Person = t.struct({
-  name: t.Str,    // a required string
-  surname: t.Str  // a required string
+  name: t.String,    // a required string
+  surname: t.String  // a required string
 });
 ```
 
@@ -324,9 +324,9 @@ In order to create an optional field, wrap the field type with the `t.maybe` com
 
 ```js
 var Person = t.struct({
-  name: t.Str,
-  surname: t.Str,
-  email: t.maybe(t.Str) // an optional string
+  name: t.String,
+  surname: t.String,
+  email: t.maybe(t.String) // an optional string
 });
 ```
 
@@ -343,14 +343,14 @@ t.form.Form.i18n = {
 
 ### Numbers
 
-In order to create a numeric field, use the `t.Num` type:
+In order to create a numeric field, use the `t.Number` type:
 
 ```js
 var Person = t.struct({
-  name: t.Str,
-  surname: t.Str,
-  email: t.maybe(t.Str),
-  age: t.Num // a numeric field
+  name: t.String,
+  surname: t.String,
+  email: t.maybe(t.String),
+  age: t.Number // a numeric field
 });
 ```
 
@@ -358,15 +358,15 @@ tcomb-form-native will convert automatically numbers to / from strings.
 
 ### Booleans
 
-In order to create a boolean field, use the `t.Bool` type:
+In order to create a boolean field, use the `t.Boolean` type:
 
 ```js
 var Person = t.struct({
-  name: t.Str,
-  surname: t.Str,
-  email: t.maybe(t.Str),
-  age: t.Num,
-  rememberMe: t.Bool // a boolean field
+  name: t.String,
+  surname: t.String,
+  email: t.maybe(t.String),
+  age: t.Number,
+  rememberMe: t.Boolean // a boolean field
 });
 ```
 
@@ -374,15 +374,15 @@ Booleans are displayed as `SwitchIOS`s.
 
 ### Dates
 
-In order to create a date field, use the `t.Dat` type:
+In order to create a date field, use the `t.Date` type:
 
 ```js
 var Person = t.struct({
-  name: t.Str,
-  surname: t.Str,
-  email: t.maybe(t.Str),
-  age: t.Num,
-  birthDate: t.Dat // a date field
+  name: t.String,
+  surname: t.String,
+  email: t.maybe(t.String),
+  age: t.Number,
+  birthDate: t.Date // a date field
 });
 ```
 
@@ -399,18 +399,18 @@ var Gender = t.enums({
 });
 
 var Person = t.struct({
-  name: t.Str,
-  surname: t.Str,
-  email: t.maybe(t.Str),
-  age: t.Num,
-  rememberMe: t.Bool,
+  name: t.String,
+  surname: t.String,
+  email: t.maybe(t.String),
+  age: t.Numner,
+  rememberMe: t.Boolean,
   gender: Gender // enum
 });
 ```
 
 Enums are displayed as `PickerIOS`s.
 
-### Subtypes
+### Refinements
 
 A *predicate* is a function with the following signature:
 
@@ -418,20 +418,20 @@ A *predicate* is a function with the following signature:
 (x: any) => boolean
 ```
 
-You can refine a type with the `t.subtype(type, predicate)` combinator:
+You can refine a type with the `t.refinement(type, predicate)` combinator:
 
 ```js
 // a type representing positive numbers
-var Positive = t.subtype(t.Num, function (n) {
+var Positive = t.refinement(t.Number, function (n) {
   return n >= 0;
 });
 
 var Person = t.struct({
-  name: t.Str,
-  surname: t.Str,
-  email: t.maybe(t.Str),
+  name: t.String,
+  surname: t.String,
+  email: t.maybe(t.String),
   age: Positive, // refinement
-  rememberMe: t.Bool,
+  rememberMe: t.Boolean,
   gender: Gender
 });
 ```
@@ -692,8 +692,8 @@ Implementation: `DatePickerIOS`
 
 ```js
 var Person = t.struct({
-  name: t.Str,
-  birthDate: t.Dat
+  name: t.String,
+  birthDate: t.Date
 });
 ```
 
@@ -733,7 +733,7 @@ You can also override the stylesheet locally for selected fields:
 
 ```js
 var Person = t.struct({
-  name: t.Str
+  name: t.String
 });
 
 var options = {
@@ -749,7 +749,7 @@ Or per form:
 
 ```js
 var Person = t.struct({
-  name: t.Str
+  name: t.String
 });
 
 var options = {
@@ -778,7 +778,7 @@ You can also override the template locally:
 
 ```js
 var Person = t.struct({
-  name: t.Str
+  name: t.String
 });
 
 function myCustomTemplate(locals) {
@@ -837,7 +837,7 @@ Say you want a search textbox which accepts a list of keywords separated by spac
 
 ```js
 var Search = t.struct({
-  search: t.list(t.Str)
+  search: t.list(t.String)
 });
 ```
 
@@ -857,8 +857,8 @@ There is a problem though: a textbox handle only strings so we need a way to tra
 
 ```js
 var Transformer = t.struct({
-  format: t.Func, // from value to string, it must be idempotent
-  parse: t.Func   // from string to value
+  format: t.Function, // from value to string, it must be idempotent
+  parse: t.Function   // from string to value
 });
 ```
 
@@ -938,11 +938,11 @@ class MyComponent extends Component {
 // as example of transformer: this is the default transformer for textboxes
 MyComponent.transformer = {
   format: value => Nil.is(value) ? null : value,
-  parse: value => (t.Str.is(value) && value.trim() === '') || Nil.is(value) ? null : value
+  parse: value => (t.String.is(value) && value.trim() === '') || Nil.is(value) ? null : value
 };
 
 var Person = t.struct({
-  name: t.Str
+  name: t.String
 });
 
 var options = {
