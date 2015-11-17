@@ -56,6 +56,24 @@
         ```
 
         - add support for struct error (bootstrap templates)
+- **Experimental**
+    - add support for maybe structs
+
+    **Example**
+
+    ```js
+    var Account = t.struct({
+      email: t.String,
+      profile: t.maybe(t.struct({
+        name: t.String,
+        surname: t.String
+      }))
+    });
+
+    // user enters email: 'aaa', => result { email: 'aaa', profile: null }
+    // user enters email: 'aaa', name: 'bbb' => validation error for surname
+    // user enters email: 'aaa', name: 'bbb', surname: 'ccc' => result { email: 'aaa', profile: { name: 'bbb', surname: 'ccc' } }
+    ```
 
 ## v0.3.0
 
