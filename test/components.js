@@ -37,7 +37,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctx
       }).getLocals().label,
@@ -46,7 +46,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {label: 'mylabel'},
         ctx: ctx
       }).getLocals().label,
@@ -55,7 +55,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.maybe(t.Str),
+        type: t.maybe(t.String),
         options: {},
         ctx: ctx
       }).getLocals().label,
@@ -69,7 +69,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctx
       }).getLocals().placeholder,
@@ -78,7 +78,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {placeholder: 'myplaceholder'},
         ctx: ctx
       }).getLocals().placeholder,
@@ -87,7 +87,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {label: 'mylabel', placeholder: 'myplaceholder'},
         ctx: ctx
       }).getLocals().placeholder,
@@ -96,7 +96,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctxPlaceholders
       }).getLocals().placeholder,
@@ -105,7 +105,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.maybe(t.Str),
+        type: t.maybe(t.String),
         options: {},
         ctx: ctxPlaceholders
       }).getLocals().placeholder,
@@ -114,7 +114,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {placeholder: 'myplaceholder'},
         ctx: ctxNone
       }).getLocals().placeholder,
@@ -128,7 +128,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctx
       }).getLocals().editable,
@@ -137,7 +137,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {editable: true},
         ctx: ctx
       }).getLocals().editable,
@@ -146,7 +146,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {editable: false},
         ctx: ctx
       }).getLocals().editable,
@@ -159,7 +159,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {help: 'myhelp'},
         ctx: ctx
       }).getLocals().help,
@@ -173,7 +173,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctx
       }).getLocals().value,
@@ -182,7 +182,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctx,
         value: 'a'
@@ -192,7 +192,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Num,
+        type: t.Number,
         options: {},
         ctx: ctx,
         value: 1.1
@@ -216,7 +216,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {transformer: transformer},
         ctx: ctx,
         value: ['a', 'b']
@@ -226,7 +226,7 @@ tape('Textbox', function (tape) {
 
     tape.deepEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {transformer: transformer},
         ctx: ctx,
         value: ['a', 'b']
@@ -241,7 +241,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctx
       }).getLocals().hasError,
@@ -250,7 +250,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {hasError: true},
         ctx: ctx
       }).getLocals().hasError,
@@ -258,7 +258,7 @@ tape('Textbox', function (tape) {
       'should handle hasError option');
 
     var textbox = new Textbox({
-      type: t.Str,
+      type: t.String,
       options: {},
       ctx: ctx
     });
@@ -271,7 +271,7 @@ tape('Textbox', function (tape) {
       'after a validation error hasError should be true');
 
     textbox = new Textbox({
-      type: t.Str,
+      type: t.String,
       options: {},
       ctx: ctx,
         value: 'a'
@@ -291,7 +291,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctx
       }).getLocals().error,
@@ -300,8 +300,8 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
-        options: {error: 'myerror'},
+        type: t.String,
+        options: {error: 'myerror', hasError: true},
         ctx: ctx
       }).getLocals().error,
       'myerror',
@@ -309,11 +309,12 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {
           error: function (value) {
             return 'error: ' + value;
-          }
+          },
+          hasError: true
         },
         ctx: ctx,
         value: 'a'
@@ -327,7 +328,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {},
         ctx: ctx
       }).getTemplate(),
@@ -338,7 +339,7 @@ tape('Textbox', function (tape) {
 
     tape.strictEqual(
       new Textbox({
-        type: t.Str,
+        type: t.String,
         options: {template: template},
         ctx: ctx
       }).getTemplate(),
@@ -433,7 +434,7 @@ tape('Select', function (tape) {
 
     var transformer = {
       format: function (value) {
-        return t.Str.is(value) ? value : value === true ? '1' : '0';
+        return t.String.is(value) ? value : value === true ? '1' : '0';
       },
       parse: function (value) {
         return value === '1';
@@ -442,7 +443,7 @@ tape('Select', function (tape) {
 
     tape.strictEqual(
       new Select({
-        type: t.maybe(t.Bool),
+        type: t.maybe(t.Boolean),
         options: {
           transformer: transformer,
           options: [
@@ -458,7 +459,7 @@ tape('Select', function (tape) {
 
     tape.deepEqual(
       new Select({
-        type: t.maybe(t.Bool),
+        type: t.maybe(t.Boolean),
         options: {
           transformer: transformer,
           options: [
@@ -539,7 +540,7 @@ tape('Select', function (tape) {
     tape.strictEqual(
       new Select({
         type: Country,
-        options: {error: 'myerror'},
+        options: {error: 'myerror', hasError: true},
         ctx: ctx
       }).getLocals().error,
       'myerror',
@@ -551,7 +552,8 @@ tape('Select', function (tape) {
         options: {
             error: function (value) {
               return 'error: ' + value;
-            }
+            },
+            hasError: true
         },
         ctx: ctx,
         value: 'a'
@@ -689,7 +691,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {},
         ctx: ctx
       }).getLocals().label,
@@ -698,7 +700,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {label: 'mylabel'},
         ctx: ctx
       }).getLocals().label,
@@ -712,7 +714,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {help: 'myhelp'},
         ctx: ctx
       }).getLocals().help,
@@ -726,7 +728,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {},
         ctx: ctx
       }).getLocals().value,
@@ -735,7 +737,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {},
         ctx: ctx,
         value: true
@@ -750,7 +752,7 @@ tape('Checkbox', function (tape) {
 
     var transformer = {
       format: function (value) {
-        return t.Str.is(value) ? value : value === true ? '1' : '0';
+        return t.String.is(value) ? value : value === true ? '1' : '0';
       },
       parse: function (value) {
         return value === '1';
@@ -759,7 +761,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {transformer: transformer},
         ctx: ctx,
         value: true
@@ -769,7 +771,7 @@ tape('Checkbox', function (tape) {
 
     tape.deepEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {transformer: transformer},
         ctx: ctx,
         value: true
@@ -782,7 +784,7 @@ tape('Checkbox', function (tape) {
   tape.test('hasError', function (tape) {
     tape.plan(4);
 
-    var True = t.subtype(t.Bool, function (value) { return value === true; });
+    var True = t.subtype(t.Boolean, function (value) { return value === true; });
 
     tape.strictEqual(
       new Checkbox({
@@ -836,7 +838,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {},
         ctx: ctx
       }).getLocals().error,
@@ -845,8 +847,8 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
-        options: {error: 'myerror'},
+        type: t.Boolean,
+        options: {error: 'myerror', hasError: true},
         ctx: ctx
       }).getLocals().error,
       'myerror',
@@ -854,8 +856,13 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
-        options: {error: function (value) { return 'error: ' + value; }},
+        type: t.Boolean,
+        options: {
+          error: function (value) {
+            return 'error: ' + value;
+          },
+          hasError: true
+        },
         ctx: ctx,
         value: 'a'
       }).getLocals().error,
@@ -868,7 +875,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {},
         ctx: ctx
       }).getTemplate(),
@@ -879,7 +886,7 @@ tape('Checkbox', function (tape) {
 
     tape.strictEqual(
       new Checkbox({
-        type: t.Bool,
+        type: t.Boolean,
         options: {template: template},
         ctx: ctx
       }).getTemplate(),
@@ -900,7 +907,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {},
         ctx: ctx,
         value: date
@@ -910,7 +917,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {label: 'mylabel'},
         ctx: ctx,
         value: date
@@ -925,7 +932,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {help: 'myhelp'},
         ctx: ctx,
         value: date
@@ -940,7 +947,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {},
         ctx: ctx,
         value: date
@@ -964,7 +971,7 @@ tape('DatePicker', function (tape) {
 
     tape.deepEqual(
       new DatePicker({
-        type: t.Str,
+        type: t.String,
         options: {transformer: transformer},
         ctx: ctx,
         value: date
@@ -974,7 +981,7 @@ tape('DatePicker', function (tape) {
 
     tape.deepEqual(
       transformer.format(new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {transformer: transformer},
         ctx: ctx,
         value: [1973, 10, 30]
@@ -989,7 +996,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {},
         ctx: ctx,
         value: date
@@ -999,7 +1006,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {hasError: true},
         ctx: ctx,
         value: date
@@ -1008,7 +1015,7 @@ tape('DatePicker', function (tape) {
       'should handle hasError option');
 
     var datePicker = new DatePicker({
-      type: t.Dat,
+      type: t.Date,
       options: {},
       ctx: ctx,
         value: date
@@ -1022,7 +1029,7 @@ tape('DatePicker', function (tape) {
       'after a validation error hasError should be true');
 
     datePicker = new DatePicker({
-      type: t.Dat,
+      type: t.Date,
       options: {},
       ctx: ctx,
       value: date
@@ -1042,7 +1049,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {},
         ctx: ctx,
         value: date
@@ -1052,8 +1059,8 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
-        options: {error: 'myerror'},
+        type: t.Date,
+        options: {error: 'myerror', hasError: true},
         ctx: ctx,
         value: date
       }).getLocals().error,
@@ -1062,11 +1069,12 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {
           error: function (value) {
             return 'error: ' + value.getFullYear();
-          }
+          },
+          hasError: true
         },
         ctx: ctx,
         value: date
@@ -1080,7 +1088,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {},
         ctx: ctx,
         value: date
@@ -1092,7 +1100,7 @@ tape('DatePicker', function (tape) {
 
     tape.strictEqual(
       new DatePicker({
-        type: t.Dat,
+        type: t.Date,
         options: {template: template},
         ctx: ctx,
         value: date
