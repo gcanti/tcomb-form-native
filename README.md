@@ -795,13 +795,18 @@ The following standard options are available (see http://facebook.github.io/reac
 tcomb-form-native comes with a default style. You can customize the look and feel by setting another stylesheet:
 
 ```js
-var t = require('tcomb-form-native');
+var t = require('tcomb-form-native/lib');
+var i18n = require('tcomb-form-native/lib/i18n/en');
+var templates = require('tcomb-form-native/lib/templates/bootstrap');
 
 // define a stylesheet (see lib/stylesheets/bootstrap for an example)
 var stylesheet = {...};
 
 // override globally the default stylesheet
 t.form.Form.stylesheet = stylesheet;
+// set defaults
+t.form.Form.templates = templates;
+t.form.Form.i18n = i18n;
 ```
 
 You can also override the stylesheet locally for selected fields:
@@ -840,13 +845,18 @@ tcomb-form-native comes with a default layout, i.e. a bunch of templates, one fo
 When changing the stylesheet is not enough, you can customize the layout by setting custom templates:
 
 ```js
-var t = require('tcomb-form-native');
+var t = require('tcomb-form-native/lib');
+var i18n = require('tcomb-form-native/lib/i18n/en');
+var stylesheet = require('tcomb-form-native/lib/stylesheets/bootstrap');
 
 // define the templates (see lib/templates/bootstrap for an example)
 var templates = {...};
 
 // override globally the default layout
 t.form.Form.templates = templates;
+// set defaults
+t.form.Form.stylesheet = stylesheet;
+t.form.Form.i18n = i18n;
 ```
 
 You can also override the template locally:
@@ -889,12 +899,14 @@ where `locals` is an object contaning the "recipe" for rendering the input and i
 Let's see an example: the `locals` object passed in the `checkbox` template:
 
 ```js
+type Message = string | ReactElement
+
 {
   stylesheet: Object, // the styles to be applied
   hasError: boolean,  // true if there is a validation error
-  error: ?string,     // the optional error message to be displayed
-  label: string,      // the label to be displayed
-  help: ?string,      // the optional help message to be displayed
+  error: ?Message,    // the optional error message to be displayed
+  label: Message,     // the label to be displayed
+  help: ?Message,     // the optional help message to be displayed
   value: boolean,     // the current value of the checkbox
   onChange: Function, // the event handler to be called when the value changes
   config: Object,     // an optional object to pass configuration options to the new template
@@ -905,6 +917,24 @@ Let's see an example: the `locals` object passed in the `checkbox` template:
 ```
 
 For a complete example see the default template https://github.com/gcanti/tcomb-form-native/blob/master/lib/templates/bootstrap.js.
+
+## i18n
+
+tcomb-form-native comes with a default internationalization (English). You can customize the look and feel by setting another i18n:
+
+```js
+var t = require('tcomb-form-native/lib');
+var templates = require('tcomb-form-native/lib/templates/bootstrap');
+
+// define a stylesheet (see tcomb-form-native/lib/i18n/en for an example)
+var i18n = {...};
+
+// override globally the default i18n
+t.form.Form.i18n = i18n;
+// set defaults
+t.form.Form.templates = templates;
+t.form.Form.stylesheet = stylesheet;
+```
 
 ## Transformers
 
