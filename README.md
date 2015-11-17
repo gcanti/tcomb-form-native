@@ -448,12 +448,24 @@ In order to customize the look and feel, use an `options` prop:
 
 ## Form component
 
-### Labels
+### Labels and placeholders
 
 By default labels are automatically generated. You can turn off this behaviour or override the default labels
 on field basis.
 
-### Placeholders
+```js
+var options = {
+  label: 'My struct label' // <= form legend, displayed before the fields
+};
+
+var options = {
+  fields: {
+    name: {
+      label: 'My name label' // <= label for the name field
+    }
+  }
+};
+```
 
 In order to automatically generate default placeholders, use the option `auto: 'placeholders'`:
 
@@ -569,12 +581,13 @@ var options = {
 
 ### Error messages
 
-You can set a custom error message with the `error` option:
+You can add a custom error message with the `error` option:
 
 ```js
 var options = {
   fields: {
     email: {
+      // you can use strings or JSX
       error: 'Insert a valid email'
     }
   }
@@ -583,14 +596,76 @@ var options = {
 
 ![Help](docs/images/error.png)
 
-tcomb-form-native will show the error message when the field validation fails.
-You can also use a function with the following signature:
+tcomb-form-native will display the error message when the field validation fails.
 
-```js
-(value: any) => string
+`error` can also be a function with the following signature:
+
+```
+(value, path, context) => ?(string | ReactElement)
 ```
 
-where the `value` param contains the current field value. The value returned by the function will be used as message.
+where
+
+- `value` is an object containing the current form value.
+- `path` is the path of the value being validated
+- `context` is the value of the `context` prop. Also it contains a reference to the component options.
+
+The value returned by the function will be used as error message.
+
+If you want to show the error message onload, add the `hasError` option:
+
+```js
+var options = {
+  hasError: true,
+  error: <i>A custom error message</i>
+};
+```
+
+Another way is to add a:
+
+```
+getValidationErrorMessage(value, path, context)
+```
+
+static function to a type, where:
+
+- `value` is the (parsed) current value of the component.
+- `path` is the path of the value being validated
+- `context` is the value of the `context` prop. Also it contains a reference to the component options.
+
+
+```js
+var Age = t.refinement(t.Number, function (n) { return n >= 18; });
+
+// if you define a getValidationErrorMessage function, it will be called on validation errors
+Age.getValidationErrorMessage = function (value, path, context) {
+  return 'bad age, locale: ' + context.locale;
+};
+
+var Schema = t.struct({
+  age: Age
+});
+
+...
+
+<t.form.Form
+  ref="form"
+  type={Schema}
+  context={{locale: 'it-IT'}}
+/>
+```
+
+You can even define `getValidationErrorMessage` on the supertype in order to be DRY:
+
+```js
+t.Number.getValidationErrorMessage = function (value, path, context) {
+  return 'bad number';
+};
+
+Age.getValidationErrorMessage = function (value, path, context) {
+  return 'bad age, locale: ' + context.locale;
+};
+```
 
 ### Other standard options
 
