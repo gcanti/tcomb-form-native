@@ -448,12 +448,24 @@ In order to customize the look and feel, use an `options` prop:
 
 ## Form component
 
-### Labels
+### Labels and placeholders
 
 By default labels are automatically generated. You can turn off this behaviour or override the default labels
 on field basis.
 
-### Placeholders
+```js
+var options = {
+  label: 'My struct label' // <= form legend, displayed before the fields
+};
+
+var options = {
+  fields: {
+    name: {
+      label: 'My name label' // <= label for the name field
+    }
+  }
+};
+```
 
 In order to automatically generate default placeholders, use the option `auto: 'placeholders'`:
 
@@ -569,12 +581,13 @@ var options = {
 
 ### Error messages
 
-You can set a custom error message with the `error` option:
+You can add a custom error message with the `error` option:
 
 ```js
 var options = {
   fields: {
     email: {
+      // you can use strings or JSX
       error: 'Insert a valid email'
     }
   }
@@ -583,14 +596,76 @@ var options = {
 
 ![Help](docs/images/error.png)
 
-tcomb-form-native will show the error message when the field validation fails.
-You can also use a function with the following signature:
+tcomb-form-native will display the error message when the field validation fails.
 
-```js
-(value: any) => string
+`error` can also be a function with the following signature:
+
+```
+(value, path, context) => ?(string | ReactElement)
 ```
 
-where the `value` param contains the current field value. The value returned by the function will be used as message.
+where
+
+- `value` is an object containing the current form value.
+- `path` is the path of the value being validated
+- `context` is the value of the `context` prop. Also it contains a reference to the component options.
+
+The value returned by the function will be used as error message.
+
+If you want to show the error message onload, add the `hasError` option:
+
+```js
+var options = {
+  hasError: true,
+  error: <i>A custom error message</i>
+};
+```
+
+Another way is to add a:
+
+```
+getValidationErrorMessage(value, path, context)
+```
+
+static function to a type, where:
+
+- `value` is the (parsed) current value of the component.
+- `path` is the path of the value being validated
+- `context` is the value of the `context` prop. Also it contains a reference to the component options.
+
+
+```js
+var Age = t.refinement(t.Number, function (n) { return n >= 18; });
+
+// if you define a getValidationErrorMessage function, it will be called on validation errors
+Age.getValidationErrorMessage = function (value, path, context) {
+  return 'bad age, locale: ' + context.locale;
+};
+
+var Schema = t.struct({
+  age: Age
+});
+
+...
+
+<t.form.Form
+  ref="form"
+  type={Schema}
+  context={{locale: 'it-IT'}}
+/>
+```
+
+You can even define `getValidationErrorMessage` on the supertype in order to be DRY:
+
+```js
+t.Number.getValidationErrorMessage = function (value, path, context) {
+  return 'bad number';
+};
+
+Age.getValidationErrorMessage = function (value, path, context) {
+  return 'bad age, locale: ' + context.locale;
+};
+```
 
 ### Other standard options
 
@@ -720,13 +795,18 @@ The following standard options are available (see http://facebook.github.io/reac
 tcomb-form-native comes with a default style. You can customize the look and feel by setting another stylesheet:
 
 ```js
-var t = require('tcomb-form-native');
+var t = require('tcomb-form-native/lib');
+var i18n = require('tcomb-form-native/lib/i18n/en');
+var templates = require('tcomb-form-native/lib/templates/bootstrap');
 
 // define a stylesheet (see lib/stylesheets/bootstrap for an example)
 var stylesheet = {...};
 
 // override globally the default stylesheet
 t.form.Form.stylesheet = stylesheet;
+// set defaults
+t.form.Form.templates = templates;
+t.form.Form.i18n = i18n;
 ```
 
 You can also override the stylesheet locally for selected fields:
@@ -765,13 +845,18 @@ tcomb-form-native comes with a default layout, i.e. a bunch of templates, one fo
 When changing the stylesheet is not enough, you can customize the layout by setting custom templates:
 
 ```js
-var t = require('tcomb-form-native');
+var t = require('tcomb-form-native/lib');
+var i18n = require('tcomb-form-native/lib/i18n/en');
+var stylesheet = require('tcomb-form-native/lib/stylesheets/bootstrap');
 
 // define the templates (see lib/templates/bootstrap for an example)
 var templates = {...};
 
 // override globally the default layout
 t.form.Form.templates = templates;
+// set defaults
+t.form.Form.stylesheet = stylesheet;
+t.form.Form.i18n = i18n;
 ```
 
 You can also override the template locally:
@@ -814,12 +899,14 @@ where `locals` is an object contaning the "recipe" for rendering the input and i
 Let's see an example: the `locals` object passed in the `checkbox` template:
 
 ```js
+type Message = string | ReactElement
+
 {
   stylesheet: Object, // the styles to be applied
   hasError: boolean,  // true if there is a validation error
-  error: ?string,     // the optional error message to be displayed
-  label: string,      // the label to be displayed
-  help: ?string,      // the optional help message to be displayed
+  error: ?Message,    // the optional error message to be displayed
+  label: Message,     // the label to be displayed
+  help: ?Message,     // the optional help message to be displayed
   value: boolean,     // the current value of the checkbox
   onChange: Function, // the event handler to be called when the value changes
   config: Object,     // an optional object to pass configuration options to the new template
@@ -830,6 +917,24 @@ Let's see an example: the `locals` object passed in the `checkbox` template:
 ```
 
 For a complete example see the default template https://github.com/gcanti/tcomb-form-native/blob/master/lib/templates/bootstrap.js.
+
+## i18n
+
+tcomb-form-native comes with a default internationalization (English). You can customize the look and feel by setting another i18n:
+
+```js
+var t = require('tcomb-form-native/lib');
+var templates = require('tcomb-form-native/lib/templates/bootstrap');
+
+// define a stylesheet (see tcomb-form-native/lib/i18n/en for an example)
+var i18n = {...};
+
+// override globally the default i18n
+t.form.Form.i18n = i18n;
+// set defaults
+t.form.Form.templates = templates;
+t.form.Form.stylesheet = stylesheet;
+```
 
 ## Transformers
 

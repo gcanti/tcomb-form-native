@@ -10,6 +10,71 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.3.1
+
+- **New Feature**
+    - default templates are now split in standalone files, so you can cherry pick which ones to load
+    - ability to customize templates, stylesheets and i18n without loading the default ones (improved docs)
+    - porting of tcomb-form `getValidationErrorMessage` feature
+
+    ```js
+    var Age = t.refinement(t.Number, function (n) { return n >= 18; });
+
+    // if you define a getValidationErrorMessage function, it will be called on validation errors
+    Age.getValidationErrorMessage = function (value) {
+      return 'bad age ' + value;
+    };
+
+    var Schema = t.struct({
+      age: Age
+    });
+    ```
+
+    - add support for nested forms, fix #43
+        - add proper support for struct refinements
+        - add support for struct label (bootstrap templates)
+
+        **Example**
+
+        ```js
+        var Account = t.struct({
+          email: t.String,
+          profile: t.struct({
+            name: t.String,
+            surname: t.String
+          })
+        });
+
+        var options = {
+          label: <Text style={{fontSize: 30}}>Account</Text>,
+          fields: {
+            profile: {
+              label: <Text style={{fontSize: 20}}>Profile</Text>
+            }
+          }
+        };
+        ```
+
+        - add support for struct error (bootstrap templates)
+- **Experimental**
+    - add support for maybe structs
+
+    **Example**
+
+    ```js
+    var Account = t.struct({
+      email: t.String,
+      profile: t.maybe(t.struct({
+        name: t.String,
+        surname: t.String
+      }))
+    });
+
+    // user enters email: 'aaa', => result { email: 'aaa', profile: null }
+    // user enters email: 'aaa', name: 'bbb' => validation error for surname
+    // user enters email: 'aaa', name: 'bbb', surname: 'ccc' => result { email: 'aaa', profile: { name: 'bbb', surname: 'ccc' } }
+    ```
+
 ## v0.3.0
 
 - **Breaking Change**
