@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.3.2
+
+- **Polish**
+    - Map value to enum, fix #56
+
 ## v0.3.1
 
 - **New Feature**
