@@ -32,6 +32,10 @@ The look and feel is customizable via react-native stylesheets and *templates* (
 
 http://react.rocks/example/tcomb-form-native
 
+### Example App
+
+[https://github.com/bartonhammond/snowflake](https://github.com/bartonhammond/snowflake) React-Native, Tcomb, Redux, Parse.com, Jest - 88% coverage
+
 # Example
 
 ```js
