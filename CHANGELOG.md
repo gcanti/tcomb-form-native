@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.3.3
+
+- **Bug Fix**
+    - v0.16.0 Warning: Form(...): React component classes must extend React.Component, fix #83
+
 ## v0.3.2
 
 - **Polish**
