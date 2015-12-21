@@ -530,7 +530,7 @@ var options = {
       // surname field configuration here..
     }
   }
-});
+};
 ```
 
 ## Textbox component
