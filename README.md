@@ -309,6 +309,58 @@ var AwesomeProject = React.createClass({
 });
 ```
 
+## How to clear form after submit
+
+```js
+var Person = t.struct({
+  name: t.String,
+  surname: t.maybe(t.String),
+  age: t.Number,
+  rememberMe: t.Boolean
+});
+
+var AwesomeProject = React.createClass({
+
+  getInitialState() {
+    return { value: null };
+  },
+
+  onChange(value) {
+    this.setState({ value });
+  },
+
+  clearForm() {
+    // clear content from all textbox
+    this.setState({ value: null });
+  },
+
+  onPress: function () {
+    var value = this.refs.form.getValue();
+    if (value) {
+      console.log(value);
+      // clear all fields after submit
+      this.clearForm();
+    }
+  },
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <Form
+          ref="form"
+          type={Person}
+          value={this.state.value}
+          onChange={this.onChange.bind(this)}
+        />
+        <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Save</Text>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+});
+```
+
 # Types
 
 ### Required field
