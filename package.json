@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/gcanti/tcomb-form-native",
   "dependencies": {
-    "react-native": ">=0.9.0",
     "tcomb-validation": "^2.0.0"
   },
   "devDependencies": {
