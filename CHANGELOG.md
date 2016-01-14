@@ -10,6 +10,16 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.4.0
+
+- **Breaking Change**
+    - drop support for RN < 0.13.0
+- **New Feature**
+    - add support for Switch (Android), fix #60 (thanks @alvaromb)
+- **Documentation**
+    - How to clear form after submit (thanks @shashi-dokania)
+    - Dynamic forms example: how to change a form based on selection
+
 ## v0.3.3
 
 - **Bug Fix**
