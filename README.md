@@ -4,6 +4,11 @@
 npm install tcomb-form-native
 ```
 
+# Supported react-native versions
+
+- tcomb-form-native ^0.4: react-native >= 0.13.0
+- tcomb-form-native ^0.3: react-native < 0.13.0
+
 ### Domain Driven Forms
 
 The [tcomb library](https://github.com/gcanti/tcomb) provides a concise but expressive way to define domain models in JavaScript.
