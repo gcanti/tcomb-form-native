@@ -1047,7 +1047,7 @@ type Message = string | ReactElement
 }
 ```
 
-For a complete example see the default template https://github.com/gcanti/tcomb-form-native/blob/master/lib/templates/bootstrap.js.
+For a complete example see the default template https://github.com/gcanti/tcomb-form-native/blob/master/lib/templates/bootstrap.
 
 ## i18n
 
