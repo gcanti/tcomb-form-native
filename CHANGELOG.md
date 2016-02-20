@@ -16,6 +16,7 @@
     - drop support for RN < 0.13.0
 - **New Feature**
     - add support for Switch (Android), fix #60 (thanks @alvaromb)
+    - add support for webpack, fix #23
 - **Documentation**
     - How to clear form after submit (thanks @shashi-dokania)
     - Dynamic forms example: how to change a form based on selection
