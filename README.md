@@ -6,7 +6,7 @@ npm install tcomb-form-native
 
 # Supported react-native versions
 
-- tcomb-form-native ^0.4: react-native >= 0.13.0
+- tcomb-form-native ^0.4: react-native >= 0.20.0
 - tcomb-form-native ^0.3: react-native < 0.13.0
 
 ### Domain Driven Forms
