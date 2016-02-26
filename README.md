@@ -517,7 +517,7 @@ var Person = t.struct({
 });
 ```
 
-Dates are displayed as `DatePickerIOS`s under iOS and `DatePickerAndroid` or `TimePickerAndroid` under Android.
+Dates are displayed as `DatePickerIOS`s under iOS and `DatePickerAndroid` or `TimePickerAndroid` under Android, depending on the `mode` selected (`date` or `time`).
 
 #### Android date `config` option
 
@@ -525,7 +525,7 @@ When using a `t.Date` type in Android, it can be configured through a `config` o
 
 | Key | Value |
 |-----|-------|
-| ``mode`` | Can take ``time`` or ``date``. Chooses which picker should the library render. Optional, defaults to ``date``. |
+| ``background`` | Determines the type of background drawable that's going to be used to display feedback. Optional, defaults to ``TouchableNativeFeedback.SelectableBackground``. |
 | ``format`` | A ``(date) => String(date)`` kind of function to provide a custom date format parsing to display the value. Optional, defaults to ``(date) => String(date)``.
 
 ### Enums
