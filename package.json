@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint lib",
-    "test": "babel-node test"
+    "test": "npm run lint && babel-node test"
   },
   "repository": {
     "type": "git",
