@@ -1,11 +1,11 @@
 {
   "name": "tcomb-form-native",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "react-native powered UI library for developing forms writing less code",
   "main": "index.js",
   "scripts": {
     "lint": "eslint lib",
-    "test": "node test"
+    "test": "babel-node test"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,13 @@
     "tcomb-validation": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "^0.23.0",
-    "eslint-plugin-react": "^2.5.2",
-    "react": "^0.13.3",
-    "tape": "^3.5.0"
+    "babel": "5.8.34",
+    "babel-core": "5.8.34",
+    "eslint": "0.23.0",
+    "eslint-plugin-react": "2.5.2",
+    "mockery": "1.4.0",
+    "react": "0.14.7",
+    "tape": "3.5.0"
   },
   "tags": [
     "tcomb",

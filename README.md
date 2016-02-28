@@ -4,6 +4,11 @@
 npm install tcomb-form-native
 ```
 
+# Supported react-native versions
+
+- tcomb-form-native ^0.4: react-native >= 0.20.0
+- tcomb-form-native ^0.3: react-native < 0.13.0
+
 ### Domain Driven Forms
 
 The [tcomb library](https://github.com/gcanti/tcomb) provides a concise but expressive way to define domain models in JavaScript.
@@ -512,7 +517,16 @@ var Person = t.struct({
 });
 ```
 
-Dates are displayed as `DatePickerIOS`s.
+Dates are displayed as `DatePickerIOS`s under iOS and `DatePickerAndroid` or `TimePickerAndroid` under Android, depending on the `mode` selected (`date` or `time`).
+
+#### Android date `config` option
+
+When using a `t.Date` type in Android, it can be configured through a `config` option that take the following parameters:
+
+| Key | Value |
+|-----|-------|
+| ``background`` | Determines the type of background drawable that's going to be used to display feedback. Optional, defaults to ``TouchableNativeFeedback.SelectableBackground``. |
+| ``format`` | A ``(date) => String(date)`` kind of function to provide a custom date format parsing to display the value. Optional, defaults to ``(date) => String(date)``.
 
 ### Enums
 
@@ -534,7 +548,7 @@ var Person = t.struct({
 });
 ```
 
-Enums are displayed as `PickerIOS`s.
+Enums are displayed as `Picker`s.
 
 ### Refinements
 
@@ -918,6 +932,8 @@ The following standard options are available (see http://facebook.github.io/reac
 
 ## Stylesheets
 
+See also [Stylesheet guide](docs/STYLESHEET.md).
+
 tcomb-form-native comes with a default style. You can customize the look and feel by setting another stylesheet:
 
 ```js
@@ -1042,7 +1058,7 @@ type Message = string | ReactElement
 }
 ```
 
-For a complete example see the default template https://github.com/gcanti/tcomb-form-native/blob/master/lib/templates/bootstrap.js.
+For a complete example see the default template https://github.com/gcanti/tcomb-form-native/blob/master/lib/templates/bootstrap.
 
 ## i18n
 
