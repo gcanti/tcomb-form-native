@@ -1,3 +1,7 @@
+[![build status](https://img.shields.io/travis/gcanti/tcomb-form-native/master.svg?style=flat-square)](https://travis-ci.org/gcanti/tcomb-form-native)
+[![dependency status](https://img.shields.io/david/gcanti/tcomb-form-native.svg?style=flat-square)](https://david-dm.org/gcanti/tcomb-form-native)
+![npm downloads](https://img.shields.io/npm/dm/tcomb-form-native.svg)
+
 # Setup
 
 ```
