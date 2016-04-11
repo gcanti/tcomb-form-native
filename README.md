@@ -936,7 +936,7 @@ The following standard options are available (see http://facebook.github.io/reac
 
 ## Stylesheets
 
-See also [Stylesheet guide](docs/STYLESHEET.md).
+See also [Stylesheet guide](docs/STYLESHEETS.md).
 
 tcomb-form-native comes with a default style. You can customize the look and feel by setting another stylesheet:
 
