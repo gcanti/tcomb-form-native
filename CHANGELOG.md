@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.4.1
+
+- **New Feature**
+    - Set `accessibilityLabel` and `accessibilityLiveRegion` attributes on form controls, fix #137 (thanks @ndarilek)
+
 ## v0.4.0
 
 - **Breaking Change**
@@ -21,7 +26,7 @@
 - **Documentation**
     - How to clear form after submit (thanks @shashi-dokania)
     - Dynamic forms example: how to change a form based on selection
-    - Stylesheet guide (docs/STYLESHEET.md)
+    - Stylesheet guide (docs/STYLESHEETS.md)
 - **Polish**
     - add travis CI
     - add ISSUE_TEMPLATE.md (new GitHub feature)
