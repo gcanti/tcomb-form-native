@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.4.2
+
+- **Bug Fix**
+    - Textbox component displays extra characters after `getValue()`, fix #142 (thanks @alvaromb)
+
 ## v0.4.1
 
 - **New Feature**
