@@ -185,8 +185,8 @@ tape('Textbox', function (tape) {
         options: {},
         ctx: ctx
       }).getLocals().value,
-      null,
-      'default value should be null');
+      '',
+      'default value should be empty string');
 
     tape.strictEqual(
       new Textbox({
