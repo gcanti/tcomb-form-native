@@ -33,6 +33,8 @@ With **tcomb-form-native** you simply call `<Form type={Model} />` to generate a
 
 JSON Schemas are also supported via the (tiny) [tcomb-json-schema library](https://github.com/gcanti/tcomb-json-schema).
 
+**Note**. Please use tcomb-json-schema ^0.2.5.
+
 ### Pluggable look and feel
 
 The look and feel is customizable via react-native stylesheets and *templates* (see documentation).
