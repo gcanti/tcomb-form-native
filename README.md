@@ -934,6 +934,22 @@ The following standard options are available (see http://facebook.github.io/reac
 - `mode`,
 - `timeZoneOffsetInMinutes`
 
+## Hidden Component
+
+For any component, you can set the field with the `hidden` option:
+
+```js
+var options = {
+  fields: {
+    name: {
+      hidden: true
+    }
+  }
+};
+```
+
+This will completely skip the rendering of the component, while the default value will be available for validation purposes.
+
 # Customizations
 
 ## Stylesheets
