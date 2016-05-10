@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.4.3
+
+- **New Feature**
+    - support hot reload, fix #132 (thanks @justim, @alvaromb)
+
 ## v0.4.2
 
 - **Bug Fix**
