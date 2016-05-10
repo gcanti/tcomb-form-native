@@ -14,6 +14,7 @@
 
 - **New Feature**
     - support hot reload, fix #132 (thanks @justim, @alvaromb)
+    - add `hidden` option [docs](https://github.com/gcanti/tcomb-form-native#hidden-component) (thanks @miqmago)
 
 ## v0.4.2
 
