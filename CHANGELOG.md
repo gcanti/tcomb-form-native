@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.4.4
+
+- **Bug Fix**
+    - Revert to export method from 869dd50 (https://github.com/gcanti/tcomb-form-native/pull/160)
+
 ## v0.4.3
 
 - **New Feature**
