@@ -10,6 +10,14 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.5.0
+
+- **Breaking Change**
+    - upgrade to `tcomb-validation` ^3.0.0 (@gcanti)
+    - React API must be now required from `react` package (@jebschiefer)
+- **New Feature**
+    - Updated support for TextInput props for RN>=0.25 (@alvaromb)
+
 ## v0.4.4
 
 - **Bug Fix**
