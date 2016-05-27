@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.5.1
+
+- **New Feature**
+    - Add onChange handler to TextInput, fix #168 (@gcanti)
+
 ## v0.5.0
 
 - **Breaking Change**
