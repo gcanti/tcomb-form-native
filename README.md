@@ -951,6 +951,50 @@ var options = {
 
 This will completely skip the rendering of the component, while the default value will be available for validation purposes.
 
+# Managing unions
+
+**Example**
+
+```js
+const AccountType = t.enums.of([
+  'type 1',
+  'type 2',
+  'other'
+], 'AccountType')
+
+const KnownAccount = t.struct({
+  type: AccountType
+}, 'KnownAccount')
+
+const UnknownAccount = t.struct({
+  type: AccountType,
+  label: t.String
+}, 'UnknownAccount')
+
+// the union type
+const Account = t.union([KnownAccount, UnknownAccount], 'Account')
+
+// you must define a dispatch function returning the suitable type
+// based on the current form value
+Account.dispatch = value => {
+  return value && value.type === 'other' ? UnknownAccount : KnownAccount
+}
+
+const Type = Account
+
+// options can be a list of options, one for each type of the union
+const options = [
+  // options of the KnownAccount type
+  {
+    label: 'KnownAccount'
+  },
+  // options of theUnknownAccount type
+  {
+    label: 'UnknownAccount'
+  }
+]
+```
+
 # Customizations
 
 ## Stylesheets
