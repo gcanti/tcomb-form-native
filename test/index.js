@@ -1,10 +1,5 @@
 'use strict';
 
-var mockery = require('mockery');
-mockery.enable();
-mockery.warnOnUnregistered(false);
-mockery.registerSubstitute('react-native', 'react');
-
 var tape = require('tape');
 var t = require('tcomb-validation');
 var bootstrap = {
@@ -1119,6 +1114,3 @@ tape('DatePicker', function (tape) {
   });
 
 });
-
-mockery.deregisterAll();
-mockery.disable();
