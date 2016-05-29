@@ -951,6 +951,51 @@ var options = {
 
 This will completely skip the rendering of the component, while the default value will be available for validation purposes.
 
+# Lists
+
+You can handle a list with the `t.list` combinator:
+
+```js
+const Person = t.struct({
+  name: t.String,
+  tags: t.list(t.String) // a list of strings
+});
+```
+
+## Items configuration
+
+To configure all the items in a list, set the `item` option:
+
+```js
+const Person = t.struct({
+  name: t.String,
+  tags: t.list(t.String) // a list of strings
+});
+
+const options = {
+  fields: { // <= Person options
+    tags: {
+      item: { // <= options applied to each item in the list
+        label: 'My tag'
+      }
+    }
+  }
+});
+```
+
+## Nested structures
+
+You can nest lists and structs at an arbitrary level:
+
+```js
+const Person = t.struct({
+  name: t.String,
+  surname: t.String
+});
+
+const Persons = t.list(Person);
+```
+
 # Managing unions
 
 **Example**
