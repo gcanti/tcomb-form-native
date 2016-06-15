@@ -549,7 +549,7 @@ var Person = t.struct({
   name: t.String,
   surname: t.String,
   email: t.maybe(t.String),
-  age: t.Numner,
+  age: t.Number,
   rememberMe: t.Boolean,
   gender: Gender // enum
 });
