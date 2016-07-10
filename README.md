@@ -951,6 +951,51 @@ var options = {
 
 This will completely skip the rendering of the component, while the default value will be available for validation purposes.
 
+# Unions
+
+**Code Example**
+
+```js
+const AccountType = t.enums.of([
+  'type 1',
+  'type 2',
+  'other'
+], 'AccountType')
+
+const KnownAccount = t.struct({
+  type: AccountType
+}, 'KnownAccount')
+
+// UnknownAccount extends KnownAccount so it owns also the type field
+const UnknownAccount = KnownAccount.extend({
+  label: t.String,
+}, 'UnknownAccount')
+
+// the union
+const Account = t.union([KnownAccount, UnknownAccount], 'Account')
+
+// the final form type
+const Type = t.list(Account)
+
+const options = {
+  item: [ // one options object for each concrete type of the union
+    {
+      label: 'KnownAccount'
+    },
+    {
+      label: 'UnknownAccount'
+    }
+  ]
+}
+```
+
+Generally `tcomb`'s unions require a `dispatch` implementation in order to select the suitable type constructor for a given value and this would be the key in this use case:
+
+```js
+// if account type is 'other' return the UnknownAccount type
+Account.dispatch = value => value && value.type === 'other' ? UnknownAccount : KnownAccount
+```
+
 # Lists
 
 You can handle a list with the `t.list` combinator:
@@ -996,9 +1041,40 @@ const Person = t.struct({
 const Persons = t.list(Person);
 ```
 
-# Managing unions
+## Internationalization
 
-**Example**
+You can override the default language (english) with the `i18n` option:
+
+```js
+const options = {
+  i18n: {
+    optional: ' (optional)',
+    required: '',
+    add: 'Add',   // add button
+    remove: '✘',  // remove button
+    up: '↑',      // move up button
+    down: '↓'     // move down button
+  }
+};
+```
+
+## Buttons configuration
+
+You can prevent operations on lists with the following options:
+
+- `disableAdd`: (default `false`) prevents adding new items
+- `disableRemove`: (default `false`) prevents removing existing items
+- `disableOrder`: (default `false`) prevents sorting existing items
+
+```js
+const options = {
+  disableOrder: true
+};
+```
+
+## List with Dynamic Items (Different structs based on selected value)
+
+Lists of different types are not supported. This is because a `tcomb`'s list, by definition, contains only values of the same type. You can define a union though:
 
 ```js
 const AccountType = t.enums.of([
@@ -1011,33 +1087,23 @@ const KnownAccount = t.struct({
   type: AccountType
 }, 'KnownAccount')
 
-const UnknownAccount = t.struct({
-  type: AccountType,
-  label: t.String
+// UnknownAccount extends KnownAccount so it owns also the type field
+const UnknownAccount = KnownAccount.extend({
+  label: t.String,
 }, 'UnknownAccount')
 
-// the union type
+// the union
 const Account = t.union([KnownAccount, UnknownAccount], 'Account')
 
-// you must define a dispatch function returning the suitable type
-// based on the current form value
-Account.dispatch = value => {
-  return value && value.type === 'other' ? UnknownAccount : KnownAccount
-}
+// the final form type
+const Type = t.list(Account)
+```
 
-const Type = Account
+Generally `tcomb`'s unions require a `dispatch` implementation in order to select the suitable type constructor for a given value and this would be the key in this use case:
 
-// options can be a list of options, one for each type of the union
-const options = [
-  // options of the KnownAccount type
-  {
-    label: 'KnownAccount'
-  },
-  // options of theUnknownAccount type
-  {
-    label: 'UnknownAccount'
-  }
-]
+```js
+// if account type is 'other' return the UnknownAccount type
+Account.dispatch = value => value && value.type === 'other' ? UnknownAccount : KnownAccount
 ```
 
 # Customizations
