@@ -10,6 +10,14 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.5.2
+
+- **New Feature**
+    - add support for unions, fix #118 (@gcanti)
+    - add support for lists, fix #80 (@gcanti)
+- **Bug Fix**
+    - allow to set a default value in Android date picker template, fix #187
+
 ## v0.5.1
 
 - **New Feature**
