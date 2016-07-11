@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.5.3
+
+- **Bug Fix**
+    - `_nativeContainerInfo` no longer exists in React v15.2.0, use `_hostContainerInfo` instead, fix #195 (@gcanti)
+
 ## v0.5.2
 
 - **New Feature**
