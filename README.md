@@ -1384,6 +1384,62 @@ var options = {
 ```
 npm test
 ```
+**Note:** If you are using Jest, you will encounter an error which can
+be fixed w/ a small change to the ```package.json```.
+
+The error will look similiar to the following:
+```
+Error: Cannot find module './datepicker' from 'index.js' at
+Resolver.resolveModule
+```
+
+A completely working example ```jest``` setup is shown below w/ the
+[http://facebook.github.io/jest/docs/api.html#modulefileextensions-array-string](http://facebook.github.io/jest/docs/api.html#modulefileextensions-array-string)
+fix added:
+
+```
+  "jest": {
+    "setupEnvScriptFile": "./node_modules/react-native/jestSupport/env.js",
+    "haste": {
+      "defaultPlatform": "ios",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "providesModuleNodeModules": [
+        "react-native"
+      ]
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6",
+      "ios.js"    <<<<<<<<<<<< this needs to be defined!
+    ],
+    "unmockedModulePathPatterns": [
+      "react",
+      "react-addons-test-utils",
+      "react-native-router-flux",
+      "promise",
+      "source-map",
+      "key-mirror",
+      "immutable",
+      "fetch",
+      "redux",
+      "redux-thunk",
+      "fbjs"
+    ],
+    "collectCoverage": false,
+    "verbose": true
+    },
+```
 
 # License
 
