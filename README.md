@@ -375,7 +375,7 @@ var AwesomeProject = React.createClass({
 
 ## Dynamic forms example: how to change a form based on selection
 
-Say I have an iospicker, depending on which option is selected in this picker I want the next component to either be a checkbox or a textbox:
+Say I have an iOS Picker, depending on which option is selected in this picker I want the next component to either be a checkbox or a textbox:
 
 ```js
 const Country = t.enums({
@@ -390,7 +390,7 @@ var AwesomeProject = React.createClass({
     if (value.country === 'IT') {
       return t.struct({
         country: Country,
-        rememebrMe: t.Boolean
+        rememberMe: t.Boolean
       });
     } else if (value.country === 'US') {
       return t.struct({
@@ -526,6 +526,18 @@ var Person = t.struct({
 
 Dates are displayed as `DatePickerIOS`s under iOS and `DatePickerAndroid` or `TimePickerAndroid` under Android, depending on the `mode` selected (`date` or `time`).
 
+#### iOS date `config` option
+
+The bundled template will render an iOS `UIDatePicker` component, but collapsed into a touchable component in order to improve usability. A `config` object can be passed to customize it with the following parameters:
+
+| Key | Value |
+|-----|-------|
+| `animation` | The animation to collapse the date picker. Defaults to `Animated.timing`. |
+| `animationConfig` | The animation configuration object. Defaults to `{duration: 200}` for the default animation. |
+| `format` | A `(date) => String(date)` kind of function to provide a custom date format parsing to display the value. Optional, defaults to `(date) => String(date)`.
+
+For the collapsible customization, look at the `dateTouchable` and `dateValue` keys in the stylesheet file.
+
 #### Android date `config` option
 
 When using a `t.Date` type in Android, it can be configured through a `config` option that take the following parameters:
@@ -556,6 +568,17 @@ var Person = t.struct({
 ```
 
 Enums are displayed as `Picker`s.
+
+#### iOS select `config` option
+
+The bundled template will render an iOS `UIPickerView` component, but collapsed into a touchable component in order to improve usability. A `config` object can be passed to customize it with the following parameters:
+
+| Key | Value |
+|-----|-------|
+| `animation` | The animation to collapse the date picker. Defaults to `Animated.timing`. |
+| `animationConfig` | The animation configuration object. Defaults to `{duration: 200}` for the default animation. |
+
+For the collapsible customization, look at the `pickerTouchable` and `pickerValue` keys in the stylesheet file.
 
 ### Refinements
 
