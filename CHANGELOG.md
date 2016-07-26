@@ -10,6 +10,12 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.6.0
+
+- **Breaking Change**
+    - Added collapsable iOS DatePicker (@alvaromb)
+    - Added collapsable iOS Picker (@alvaromb)
+
 ## v0.5.3
 
 - **Bug Fix**
