@@ -903,7 +903,7 @@ You can customize the null option with the `nullOption` option:
 var options = {
   fields: {
     gender: {
-      nullOption: {value: '', label: 'Choose your gender'}
+      nullOption: {value: '', text: 'Choose your gender'}
     }
   }
 };
