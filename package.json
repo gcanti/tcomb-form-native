@@ -1,6 +1,6 @@
 {
   "name": "tcomb-form-native",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "react-native powered UI library for developing forms writing less code",
   "main": "index.js",
   "scripts": {

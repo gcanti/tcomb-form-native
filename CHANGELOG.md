@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.6.1
+
+- **New Feature**
+    - Added support for minDate and maxDate in Android TimePickerAndroid (@alvaromb)
+
 ## v0.6.0
 
 - **Breaking Change**
