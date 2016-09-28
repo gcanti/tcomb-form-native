@@ -1064,6 +1064,36 @@ const Person = t.struct({
 const Persons = t.list(Person);
 ```
 
+If you want to provide options for your nested structures they must be nested
+following the type structure. Here is an example:
+
+```js
+const Person = t.struct({
+  name: t.Struct,
+  position: t.Struct({
+    latitude: t.Number,
+    longitude: t.Number
+  });
+});
+
+const options = {
+  fields: { // <= Person options
+    name: {
+        label: 'name label'
+    }
+    position: {
+        fields: {
+            // Note that latitude is not not directly nested in position, 
+            // but in the fields property
+            latitude: { 
+                label: 'My position label'
+            }
+        }
+    }
+  }
+});
+```
+
 ## Internationalization
 
 You can override the default language (english) with the `i18n` option:
