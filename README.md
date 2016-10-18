@@ -844,6 +844,7 @@ The following standard options are available (see http://facebook.github.io/reac
 - `autoCapitalize`
 - `autoCorrect`
 - `autoFocus`
+- `blurOnSubmit`
 - `bufferDelay`
 - `clearButtonMode`
 - `editable`
@@ -856,14 +857,11 @@ The following standard options are available (see http://facebook.github.io/reac
 - `onEndEditing`
 - `onFocus`
 - `onSubmitEditing`
-- `password`
 - `placeholderTextColor`
 - `returnKeyType`
 - `selectTextOnFocus`
 - `secureTextEntry`
 - `selectionState`
-- `textAlign`
-- `textAlignVertical`
 - `underlineColorAndroid`
 
 ## Checkbox component
