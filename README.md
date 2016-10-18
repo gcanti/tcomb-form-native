@@ -2,6 +2,20 @@
 [![dependency status](https://img.shields.io/david/gcanti/tcomb-form-native.svg?style=flat-square)](https://david-dm.org/gcanti/tcomb-form-native)
 ![npm downloads](https://img.shields.io/npm/dm/tcomb-form-native.svg)
 
+# Contents
+
+- [Setup](#setup)
+- [Supported react-native versions](#supported-react-native-versions)
+- [Example](#example)
+- [API](#api)
+- [Types](#types)
+- [Rendering options](#rendering-options)
+- [Unions](#unions)
+- [Lists](#lists)
+- [Customizations](#customizations)
+- [Tests](#tests)
+- [License](#license)
+
 # Setup
 
 ```
@@ -1083,9 +1097,9 @@ const options = {
     }
     position: {
         fields: {
-            // Note that latitude is not not directly nested in position, 
+            // Note that latitude is not not directly nested in position,
             // but in the fields property
-            latitude: { 
+            latitude: {
                 label: 'My position label'
             }
         }
