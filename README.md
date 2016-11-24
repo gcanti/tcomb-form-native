@@ -1097,7 +1097,7 @@ const options = {
     }
     position: {
         fields: {
-            // Note that latitude is not not directly nested in position,
+            // Note that latitude is not directly nested in position,
             // but in the fields property
             latitude: {
                 label: 'My position label'
