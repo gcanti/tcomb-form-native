@@ -592,7 +592,7 @@ The bundled template will render an iOS `UIPickerView` component, but collapsed 
 | `animation` | The animation to collapse the date picker. Defaults to `Animated.timing`. |
 | `animationConfig` | The animation configuration object. Defaults to `{duration: 200}` for the default animation. |
 
-For the collapsible customization, look at the `pickerTouchable` and `pickerValue` keys in the stylesheet file.
+For the collapsible customization, look at the `pickerContainer`, `pickerTouchable` and `pickerValue` keys in the stylesheet file.
 
 ### Refinements
 
