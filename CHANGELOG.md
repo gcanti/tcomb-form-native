@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.6.3
+
+- **New Feature**
+    - Ability to style picker container (@dbonner1987)
+
 ## v0.6.2
 
 - **New Feature**
