@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.6.2
+
+- **New Feature**
+    - Make `underlineColorAndroid` transparent by default, fix #239 (@adamrainsby)
+
 ## v0.6.1
 
 - **New Feature**
