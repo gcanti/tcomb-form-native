@@ -115,6 +115,7 @@ const options = {
 - controlLabel
 - helpBlock
 - errorBlock
+- textboxView
 
 ## Overriding the style globally
 
