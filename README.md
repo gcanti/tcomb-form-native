@@ -394,7 +394,7 @@ Say I have an iOS Picker, depending on which option is selected in this picker I
 ```js
 const Country = t.enums({
   'IT': 'Italy',
-  'US': 'Unisted States'
+  'US': 'United States'
 }, 'Country');
 
 var AwesomeProject = React.createClass({
