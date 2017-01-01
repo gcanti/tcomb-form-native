@@ -111,6 +111,9 @@ const options = {
 - datepicker
   - normal
   - error
+- textboxContainer:
+  - normal
+  - error
 - formGroup
 - controlLabel
 - helpBlock
