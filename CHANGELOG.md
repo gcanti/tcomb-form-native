@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.6.4
+
+- **New Feature**
+    - Wrap TextInput in a View for More Customizable Styling, e.g. [Material Design Style Underlines](https://github.com/gcanti/tcomb-form-native/blob/master/docs/STYLESHEETS.md#material-design-style-underlines) (@kenleezle)
+
 ## v0.6.3
 
 - **New Feature**
