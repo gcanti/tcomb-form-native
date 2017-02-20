@@ -870,6 +870,7 @@ The following standard options are available (see http://facebook.github.io/reac
 - `onEndEditing`
 - `onFocus`
 - `onSubmitEditing`
+- `onContentSizeChange`
 - `password`
 - `placeholderTextColor`
 - `returnKeyType`
