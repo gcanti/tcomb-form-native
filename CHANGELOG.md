@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## v0.6.5
+
+- **New Feature**
+    - Added `onContentSizeChange` as an option for TextBox (@nemo)
+
 ## v0.6.4
 
 - **New Feature**
