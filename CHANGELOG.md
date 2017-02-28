@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## 0.6.6
+
+- **Polish**
+    - Solves scroll view issues with text fields in Android, fix #301 (@alvaromb)
+
 ## v0.6.5
 
 - **New Feature**
