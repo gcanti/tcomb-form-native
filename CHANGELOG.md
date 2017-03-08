@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## 0.6.7
+
+- **Bug fix**
+    - fix #301, PR https://github.com/gcanti/tcomb-form-native/pull/329 (@danilvalov)
+
 ## 0.6.6
 
 - **Polish**
