@@ -1109,6 +1109,38 @@ const options = {
 });
 ```
 
+When dealing with `t.list`, make sure to declare the `fields` property inside the `item` property, as such:
+
+```js
+const Documents = t.struct({
+  type: t.Number,
+  value: t.String
+})
+
+const Person = t.struct({
+  name: t.Struct,
+  documents: t.list(Documents)
+});
+
+const options = {
+  fields: {
+    name: { /*...*/ },
+    documents: {
+      item: {
+        fields: {
+          type: {
+            // Documents t.struct 'type' options
+          },
+          value: {
+            // Documents t.struct 'value' options
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 ## Internationalization
 
 You can override the default language (english) with the `i18n` option:
