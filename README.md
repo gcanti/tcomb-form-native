@@ -1340,13 +1340,13 @@ For a complete example see the default template https://github.com/gcanti/tcomb-
 
 ## i18n
 
-tcomb-form-native comes with a default internationalization (English). You can customize the look and feel by setting another i18n:
+tcomb-form-native comes with a default internationalization (English). You can change it by setting another i18n object:
 
 ```js
 var t = require('tcomb-form-native/lib');
 var templates = require('tcomb-form-native/lib/templates/bootstrap');
 
-// define a stylesheet (see tcomb-form-native/lib/i18n/en for an example)
+// define an object containing your translations (see tcomb-form-native/lib/i18n/en for an example)
 var i18n = {...};
 
 // override globally the default i18n
