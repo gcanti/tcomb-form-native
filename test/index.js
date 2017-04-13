@@ -396,6 +396,65 @@ test('Select:label', function (tape) {
 
 });
 
+test('Select:placeholder', function (tape) {
+    tape.plan(6);
+
+    tape.strictEqual(
+        new Select({
+            type: Country,
+            options: {},
+            ctx: ctx
+        }).getLocals().placeholder,
+        undefined,
+        'default placeholder should be undefined');
+
+    tape.strictEqual(
+        new Select({
+            type: Country,
+            options: {placeholder: 'myplaceholder'},
+            ctx: ctx
+        }).getLocals().placeholder,
+        'myplaceholder',
+        'should handle placeholder option');
+
+    tape.strictEqual(
+        new Select({
+            type: Country,
+            options: {label: 'mylabel', placeholder: 'myplaceholder'},
+            ctx: ctx
+        }).getLocals().placeholder,
+        'myplaceholder',
+        'should handle placeholder option even if a label is specified');
+
+    tape.strictEqual(
+        new Select({
+            type: Country,
+            options: {},
+            ctx: ctxPlaceholders
+        }).getLocals().placeholder,
+        'ctxDefaultLabel',
+        'should have a default placeholder if auto = placeholders');
+
+    tape.strictEqual(
+        new Select({
+            type: t.maybe(Country),
+            options: {},
+            ctx: ctxPlaceholders
+        }).getLocals().placeholder,
+        'ctxDefaultLabel (optional)',
+        'should handle optional types if auto = placeholders');
+
+    tape.strictEqual(
+        new Select({
+            type: Country,
+            options: {placeholder: 'myplaceholder'},
+            ctx: ctxNone
+        }).getLocals().placeholder,
+        'myplaceholder',
+        'should handle placeholder option even if auto === none');
+
+});
+
 test('Select:help', function (tape) {
   tape.plan(1);
 
@@ -411,7 +470,7 @@ test('Select:help', function (tape) {
 });
 
 test('Select:value', function (tape) {
-  tape.plan(2);
+  tape.plan(3);
 
   tape.strictEqual(
     new Select({
@@ -419,8 +478,17 @@ test('Select:value', function (tape) {
       options: {},
       ctx: ctx
     }).getLocals().value,
-    '',
-    'default value should be nullOption.value');
+    undefined,
+    'default value should be undefined');
+
+  tape.strictEqual(
+      new Select({
+          type: Country,
+          options: {nullOption: {value: '', text: '-'}},
+          ctx: ctx
+      }).getLocals().value,
+      '',
+      'default value should be nullOption.value if nullOption is specified');
 
   tape.strictEqual(
     new Select({
@@ -607,7 +675,6 @@ test('Select:options', function (tape) {
       ctx: ctx
     }).getLocals().options,
     [
-      { text: '-', value: '' },
       { text: 'Italia', value: 'IT' },
       { text: 'Stati Uniti', value: 'US' }
     ],
@@ -621,7 +688,10 @@ test('Select:order', function (tape) {
   tape.deepEqual(
     new Select({
       type: Country,
-      options: {order: 'asc'},
+      options: {
+          order: 'asc',
+          nullOption: {value: '', text: '-'}
+      },
       ctx: ctx
     }).getLocals().options,
     [
@@ -635,7 +705,10 @@ test('Select:order', function (tape) {
   tape.deepEqual(
     new Select({
       type: Country,
-      options: {order: 'desc'},
+      options: {
+          order: 'desc',
+          nullOption: {value: '', text: '-'}
+      },
       ctx: ctx
     }).getLocals().options,
     [
