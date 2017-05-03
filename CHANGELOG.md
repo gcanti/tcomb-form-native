@@ -10,6 +10,13 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## 0.6.8
+
+- **New Feature**
+    - allow disabling datepicker by passing disabled prop to touchableopacity we can disable the datepicker (@koenpunt)
+- **Bug fix**
+    - Add proper border color to select.ios when there is an error, fix #342 (@javiercr)
+
 ## 0.6.7
 
 - **Bug fix**
