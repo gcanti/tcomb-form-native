@@ -10,6 +10,11 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## 0.6.9
+
+- **Bug fix**
+    - Android timepicker always open the current time (@francescjimenez)
+
 ## 0.6.8
 
 - **New Feature**
