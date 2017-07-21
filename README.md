@@ -1066,6 +1066,32 @@ const options = {
 });
 ```
 
+### Setting list button group layout
+
+You can set the config option of a list with the following options to change the move/remove button group layout:
+
+```
+const options = {
+  fields: { // <= Person options
+    tags: {
+      item: {
+        label: 'My tag',
+        config: {
+          buttonGroupPosition: 'before',
+          buttonGroupFlexDirection: 'colomn'
+        }
+      }
+    }
+  }
+});
+```
+
+#### Defaults
+
+By default `buttonGroupPosition` is not defined, which will result in the button group being placed *after* the item fields. Pass `'before'` to position the buttons before the item fields.
+
+By default `buttonGroupFlexDirection` is set to `'row'`, which sets the `flexDirection` style attribute of the buttom group and item fields' container. Pass `'columns'` to position the button group and item fields vertically.
+
 ## Nested structures
 
 You can nest lists and structs at an arbitrary level:
