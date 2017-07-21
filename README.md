@@ -1072,13 +1072,13 @@ You can set the config option of a list with the following options to change the
 
 ```
 const options = {
-  fields: { // <= Person options
+  fields: {
     tags: {
       item: {
         label: 'My tag',
         config: {
-          buttonGroupPosition: 'before',
-          buttonGroupFlexDirection: 'colomn'
+          buttonGroupPosition: 'before', // <===
+          buttonGroupFlexDirection: 'colomn' // <===
         }
       }
     }
