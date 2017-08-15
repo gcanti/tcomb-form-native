@@ -255,7 +255,7 @@ var AwesomeProject = React.createClass({
 
   onChange(value) {
     // tcomb immutability helpers
-    // https://github.com/gcanti/tcomb/blob/master/GUIDE.md#updating-immutable-instances
+    // https://github.com/gcanti/tcomb/blob/master/docs/API.md#updating-immutable-instances
     var options = t.update(this.state.options, {
       fields: {
         name: {
