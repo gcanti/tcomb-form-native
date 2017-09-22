@@ -688,7 +688,7 @@ test('Select:nullOption', function (tape) {
 var Checkbox = core.Checkbox;
 
 test('Checkbox:label', function (tape) {
-  tape.plan(2);
+  tape.plan(3);
 
   tape.strictEqual(
     new Checkbox({
@@ -708,6 +708,14 @@ test('Checkbox:label', function (tape) {
     'mylabel',
     'should handle `label` option');
 
+  tape.strictEqual(
+    new Checkbox({
+      type: t.Boolean,
+      options: {},
+      ctx: ctxNone
+    }).getLocals().label,
+    null,
+    'should have null `label` when auto `none`');
 });
 
 test('Checkbox:help', function (tape) {
@@ -1152,4 +1160,3 @@ test('List:should support unions', (assert) => {
 
   assert.strictEqual(component.getItems()[0].input.props.type, UnknownAccount);
 });
-
