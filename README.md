@@ -2,6 +2,20 @@
 [![dependency status](https://img.shields.io/david/gcanti/tcomb-form-native.svg?style=flat-square)](https://david-dm.org/gcanti/tcomb-form-native)
 ![npm downloads](https://img.shields.io/npm/dm/tcomb-form-native.svg)
 
+# Contents
+
+- [Setup](#setup)
+- [Supported react-native versions](#supported-react-native-versions)
+- [Example](#example)
+- [API](#api)
+- [Types](#types)
+- [Rendering options](#rendering-options)
+- [Unions](#unions)
+- [Lists](#lists)
+- [Customizations](#customizations)
+- [Tests](#tests)
+- [License](#license)
+
 # Setup
 
 ```
@@ -244,7 +258,7 @@ var AwesomeProject = React.createClass({
 
   onChange(value) {
     // tcomb immutability helpers
-    // https://github.com/gcanti/tcomb/blob/master/GUIDE.md#updating-immutable-instances
+    // https://github.com/gcanti/tcomb/blob/master/docs/API.md#updating-immutable-instances
     var options = t.update(this.state.options, {
       fields: {
         name: {
@@ -383,7 +397,7 @@ Say I have an iOS Picker, depending on which option is selected in this picker I
 ```js
 const Country = t.enums({
   'IT': 'Italy',
-  'US': 'Unisted States'
+  'US': 'United States'
 }, 'Country');
 
 var AwesomeProject = React.createClass({
@@ -549,6 +563,7 @@ When using a `t.Date` type in Android, it can be configured through a `config` o
 |-----|-------|
 | ``background`` | Determines the type of background drawable that's going to be used to display feedback. Optional, defaults to ``TouchableNativeFeedback.SelectableBackground``. |
 | ``format`` | A ``(date) => String(date)`` kind of function to provide a custom date format parsing to display the value. Optional, defaults to ``(date) => String(date)``.
+| ``dialogMode`` | Determines the type of datepicker mode for Android (`default`, `spinner` or `calendar`).
 
 ### Enums
 
@@ -581,7 +596,7 @@ The bundled template will render an iOS `UIPickerView` component, but collapsed 
 | `animation` | The animation to collapse the date picker. Defaults to `Animated.timing`. |
 | `animationConfig` | The animation configuration object. Defaults to `{duration: 200}` for the default animation. |
 
-For the collapsible customization, look at the `pickerTouchable` and `pickerValue` keys in the stylesheet file.
+For the collapsible customization, look at the `pickerContainer`, `pickerTouchable` and `pickerValue` keys in the stylesheet file.
 
 ### Refinements
 
@@ -859,6 +874,7 @@ The following standard options are available (see http://facebook.github.io/reac
 - `onEndEditing`
 - `onFocus`
 - `onSubmitEditing`
+- `onContentSizeChange`
 - `password`
 - `placeholderTextColor`
 - `returnKeyType`
@@ -1086,7 +1102,7 @@ const options = {
     }
     position: {
         fields: {
-            // Note that latitude is not not directly nested in position,
+            // Note that latitude is not directly nested in position,
             // but in the fields property
             latitude: {
                 label: 'My position label'
@@ -1095,6 +1111,38 @@ const options = {
     }
   }
 });
+```
+
+When dealing with `t.list`, make sure to declare the `fields` property inside the `item` property, as such:
+
+```js
+const Documents = t.struct({
+  type: t.Number,
+  value: t.String
+})
+
+const Person = t.struct({
+  name: t.Struct,
+  documents: t.list(Documents)
+});
+
+const options = {
+  fields: {
+    name: { /*...*/ },
+    documents: {
+      item: {
+        fields: {
+          type: {
+            // Documents t.struct 'type' options
+          },
+          value: {
+            // Documents t.struct 'value' options
+          }
+        }
+      }
+    }
+  }
+}
 ```
 
 ## Internationalization
@@ -1296,13 +1344,13 @@ For a complete example see the default template https://github.com/gcanti/tcomb-
 
 ## i18n
 
-tcomb-form-native comes with a default internationalization (English). You can customize the look and feel by setting another i18n:
+tcomb-form-native comes with a default internationalization (English). You can change it by setting another i18n object:
 
 ```js
 var t = require('tcomb-form-native/lib');
 var templates = require('tcomb-form-native/lib/templates/bootstrap');
 
-// define a stylesheet (see tcomb-form-native/lib/i18n/en for an example)
+// define an object containing your translations (see tcomb-form-native/lib/i18n/en for an example)
 var i18n = {...};
 
 // override globally the default i18n
