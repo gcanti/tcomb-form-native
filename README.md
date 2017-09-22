@@ -24,9 +24,12 @@ npm install tcomb-form-native
 
 # Supported react-native versions
 
-- tcomb-form-native ^0.5: react-native >= 0.25.0
-- tcomb-form-native ^0.4: react-native >= 0.20.0
-- tcomb-form-native ^0.3: react-native < 0.13.0
+| Version | React Native Support | Android Support | iOS Support |
+|---|---|---|---|
+| 0.5 - 0.6.1 | 0.25.0 - 0.35.0 | 7.1 | 10.0.2 |
+| 0.4 | 0.20.0 - 0.24.0 | 7.1 | 10.0.2 |
+| 0.3 | 0.1.0 - 0.13.0  | 7.1 | 10.0.2 |
+*Complies with [react-native-version-support-table](https://github.com/dangnelson/react-native-version-support-table)*
 
 ### Domain Driven Forms
 
