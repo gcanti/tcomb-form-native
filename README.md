@@ -967,7 +967,7 @@ The following options are similar to the `Textbox` component's ones:
 - `help`
 - `error`
 
-### Other standard options
+### Other standard options (iOS)
 
 The following standard options are available (see http://facebook.github.io/react-native/docs/datepickerios.html):
 
@@ -976,6 +976,14 @@ The following standard options are available (see http://facebook.github.io/reac
 - `minuteInterval`,
 - `mode`,
 - `timeZoneOffsetInMinutes`
+
+### Other standard options (Android)
+
+The following standard options are available (see http://facebook.github.io/react-native/docs/datepickerandroid.html):
+
+- `maximumDate`,
+- `minimumDate`,
+- `mode` (using the `androidMode` option)
 
 ## Hidden Component
 
