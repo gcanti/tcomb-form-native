@@ -560,6 +560,7 @@ When using a `t.Date` type in Android, it can be configured through a `config` o
 |-----|-------|
 | ``background`` | Determines the type of background drawable that's going to be used to display feedback. Optional, defaults to ``TouchableNativeFeedback.SelectableBackground``. |
 | ``format`` | A ``(date) => String(date)`` kind of function to provide a custom date format parsing to display the value. Optional, defaults to ``(date) => String(date)``.
+| ``dialogMode`` | Determines the type of datepicker mode for Android (`default`, `spinner` or `calendar`).
 
 ### Enums
 
