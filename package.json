@@ -21,12 +21,17 @@
     "tcomb-validation": "^3.0.0"
   },
   "devDependencies": {
+    "@types/eslint-plugin-prettier": "^2.2.0",
+    "@types/prettier": "^1.7.0",
     "babel": "5.8.34",
     "babel-core": "5.8.34",
-    "eslint": "0.23.0",
+    "eslint": "^4.9.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "2.5.2",
-    "react": "^15.6.1",
+    "prettier": "^1.7.4",
     "prop-types": "^15.5.10",
+    "react": "^15.6.1",
     "tape": "3.5.0"
   },
   "tags": [
