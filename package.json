@@ -1,7 +1,8 @@
 {
   "name": "tcomb-form-native",
-  "version": "0.6.10",
-  "description": "react-native powered UI library for developing forms writing less code",
+  "version": "0.6.11",
+  "description":
+    "react-native powered UI library for developing forms writing less code",
   "main": "index.js",
   "scripts": {
     "lint": "eslint lib",
@@ -34,14 +35,7 @@
     "react": "^15.6.1",
     "tape": "3.5.0"
   },
-  "tags": [
-    "tcomb",
-    "form",
-    "forms",
-    "react",
-    "react-native",
-    "react-component"
-  ],
+  "tags": ["tcomb", "form", "forms", "react", "react-native", "react-component"],
   "keywords": [
     "tcomb",
     "form",
