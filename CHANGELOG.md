@@ -10,6 +10,13 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## 0.6.11
+
+- **New Feature**
+    - add support for datetime in Android, closes #283 (@alvaromb)
+- **Polish**
+    - lib uses prettier formatting (@alvaromb)
+
 ## 0.6.10
 
 - **New Feature**
