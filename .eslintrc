@@ -23,7 +23,7 @@
     "no-multi-spaces": 0,
     "consistent-return": 0,
     "no-use-before-define": 0,
-    "quotes": [2, "single"],
+    "quotes": [2, "double"],
     "comma-dangle": 1,
     "react/jsx-boolean-value": 1,
     "react/jsx-quotes": 1,
