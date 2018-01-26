@@ -990,7 +990,7 @@ test("DatePicker:help", function(tape) {
 });
 
 test("DatePicker:value", function(tape) {
-  tape.plan(1);
+  tape.plan(2);
 
   tape.strictEqual(
     new DatePicker({
@@ -1001,6 +1001,17 @@ test("DatePicker:value", function(tape) {
     }).getLocals().value,
     date,
     "should handle value option"
+  );
+
+  tape.strictEqual(
+    new DatePicker({
+      type: t.Date,
+      options: {},
+      ctx: ctx,
+      value: null
+    }).getLocals().value,
+    null,
+    "default value should be null when empty"
   );
 });
 
