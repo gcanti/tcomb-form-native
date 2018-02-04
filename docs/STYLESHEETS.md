@@ -176,8 +176,8 @@ const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
 
 stylesheet.formGroup.normal.flexDirection = 'row';
 stylesheet.formGroup.error.flexDirection = 'row';
-stylesheet.textbox.normal.flex = 1;
-stylesheet.textbox.error.flex = 1;
+stylesheet.textboxView.normal.flex = 1;
+stylesheet.textboxView.error.flex = 1;
 
 const options = {
   stylesheet: stylesheet
