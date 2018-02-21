@@ -2,6 +2,7 @@
 
 var test = require("tape");
 var t = require("tcomb-validation");
+var mockRequire = require("mock-require");
 var bootstrap = {
   checkbox: function() {},
   datepicker: function() {},
@@ -12,6 +13,14 @@ var bootstrap = {
 };
 
 var core = require("../lib/components");
+mockRequire("react-native", {
+  Platform: {
+    OS: "ios",
+    select: function(obj) {
+      return obj.ios || {}
+    }
+  }
+})
 var stylesheet = require("../lib/stylesheets/bootstrap");
 import { UIDGenerator } from "../lib/util";
 
@@ -379,7 +388,7 @@ test("Textbox:template", function(tape) {
 });
 
 test("Textbox:autoGrow", function(tape) {
-  tape.plan(2);
+  tape.plan(8);
 
   tape.strictEqual(
     new Textbox({
@@ -401,6 +410,31 @@ test("Textbox:autoGrow", function(tape) {
     }).getLocals().autoGrow,
     true,
     "should handle autoGrow option"
+  );
+
+  tape.ok(
+    "minHeight" in stylesheet.textbox.normal,
+    "should use minHeight for textbox normal style"
+  );
+  tape.notOk(
+    "height" in stylesheet.textbox.normal,
+    "should not use height for textbox normal style"
+  );
+  tape.ok(
+    "minHeight" in stylesheet.textbox.error,
+    "should use minHeight for textbox error style"
+  );
+  tape.notOk(
+    "height" in stylesheet.textbox.error,
+    "should not use height for textbox error style"
+  );
+  tape.ok(
+    "minHeight" in stylesheet.textbox.notEditable,
+    "should use minHeight for textbox notEditable style"
+  );
+  tape.notOk(
+    "height" in stylesheet.textbox.notEditable,
+    "should not use height for textbox notEditable style"
   );
 });
 
