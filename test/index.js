@@ -12,6 +12,7 @@ var bootstrap = {
 };
 
 var core = require("../lib/components");
+var stylesheet = require("../lib/stylesheets/bootstrap");
 import { UIDGenerator } from "../lib/util";
 
 var ctx = {
@@ -374,6 +375,32 @@ test("Textbox:template", function(tape) {
     }).getTemplate(),
     template,
     "should handle template option"
+  );
+});
+
+test("Textbox:autoGrow", function(tape) {
+  tape.plan(2);
+
+  tape.strictEqual(
+    new Textbox({
+      type: t.String,
+      options: {},
+      ctx: ctx
+    }).getLocals().autoGrow,
+    undefined,
+    "default autoGrow should be undefined"
+  );
+
+  tape.strictEqual(
+    new Textbox({
+      type: t.String,
+      options: {
+        autoGrow: true
+      },
+      ctx: ctx
+    }).getLocals().autoGrow,
+    true,
+    "should handle autoGrow option"
   );
 });
 
