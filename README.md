@@ -2,6 +2,10 @@
 [![dependency status](https://img.shields.io/david/gcanti/tcomb-form-native.svg?style=flat-square)](https://david-dm.org/gcanti/tcomb-form-native)
 ![npm downloads](https://img.shields.io/npm/dm/tcomb-form-native.svg)
 
+# Notice
+
+`tcomb-form-native` is looking for maintainers. If you're interested in helping a great way to get started would just be to start weighing-in on GitHub issues, reviewing and testing some PRs.
+
 # Contents
 
 - [Setup](#setup)
