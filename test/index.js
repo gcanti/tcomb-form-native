@@ -1213,3 +1213,28 @@ test("List:should support unions", assert => {
 
   assert.strictEqual(component.getItems()[0].input.props.type, UnknownAccount);
 });
+
+test("List:should support validation using string values", assert => {
+  let component = new List({
+    type: t.list(t.String),
+    ctx: ctx,
+    options: {},
+    value: [
+      "item 1",
+      "item 2"
+    ]
+  });
+  try {
+    assert.plan(2);
+
+    const validationResult = component.validate();
+
+    assert.deepEqual(validationResult.value, [
+      "item 1",
+      "item 2"
+    ]);
+    assert.deepEqual(validationResult.errors, []);
+  } catch(e) {
+    assert.fail("Should not throw an exception");
+  }
+});
