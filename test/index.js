@@ -42,7 +42,7 @@ var ctxNone = {
 var Textbox = core.Textbox;
 
 test("Textbox:label", function(tape) {
-  tape.plan(3);
+  tape.plan(4);
 
   tape.strictEqual(
     new Textbox({
@@ -72,6 +72,16 @@ test("Textbox:label", function(tape) {
     }).getLocals().label,
     "ctxDefaultLabel (optional)",
     "should handle optional types"
+  );
+
+  tape.strictEqual(
+    new Textbox({
+      type: t.maybe(t.String),
+      options: { label: "mylabel" },
+      ctx: ctx
+    }).getLocals().label,
+    "mylabel (optional)",
+    "should handle `label` option with optional types"
   );
 });
 
