@@ -126,11 +126,6 @@ var styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#ffffff',
   },
-  title: {
-    fontSize: 30,
-    alignSelf: 'center',
-    marginBottom: 30
-  },
   buttonText: {
     fontSize: 18,
     color: 'white',
