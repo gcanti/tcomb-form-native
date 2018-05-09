@@ -740,6 +740,20 @@ test("Select:isCollapsed:false", function(tape) {
   );
 });
 
+test("Select:onCollapse", function(tape) {
+  tape.plan(1);
+  const onCollapsFunc = () => {};
+  tape.strictEqual(
+    new Select({
+      type: Country,
+      options: { onCollapse: onCollapsFunc },
+      ctx: ctx
+    }).getLocals().onCollapse,
+    onCollapsFunc,
+    "should handle help option"
+  );
+});
+
 var Checkbox = core.Checkbox;
 
 test("Checkbox:label", function(tape) {
