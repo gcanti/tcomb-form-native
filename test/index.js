@@ -746,9 +746,9 @@ test("Select:onCollapse", function(tape) {
   tape.strictEqual(
     new Select({
       type: Country,
-      options: { onCollapse: onCollapsFunc },
+      options: { onCollapseChange: onCollapsFunc },
       ctx: ctx
-    }).getLocals().onCollapse,
+    }).getLocals().onCollapseChange,
     onCollapsFunc,
     "should handle help option"
   );
