@@ -556,6 +556,7 @@ The bundled template will render an iOS `UIDatePicker` component, but collapsed 
 | `animation` | The animation to collapse the date picker. Defaults to `Animated.timing`. |
 | `animationConfig` | The animation configuration object. Defaults to `{duration: 200}` for the default animation. |
 | `format` | A `(date) => String(date)` kind of function to provide a custom date format parsing to display the value. Optional, defaults to `(date) => String(date)`.
+| `defaultValueText` | An `string` to customize the default value of the `null` date value text. |
 
 For the collapsible customization, look at the `dateTouchable` and `dateValue` keys in the stylesheet file.
 
@@ -567,7 +568,8 @@ When using a `t.Date` type in Android, it can be configured through a `config` o
 |-----|-------|
 | ``background`` | Determines the type of background drawable that's going to be used to display feedback. Optional, defaults to ``TouchableNativeFeedback.SelectableBackground``. |
 | ``format`` | A ``(date) => String(date)`` kind of function to provide a custom date format parsing to display the value. Optional, defaults to ``(date) => String(date)``.
-| ``dialogMode`` | Determines the type of datepicker mode for Android (`default`, `spinner` or `calendar`).
+| ``dialogMode`` | Determines the type of datepicker mode for Android (`default`, `spinner` or `calendar`). |
+| `defaultValueText` | An `string` to customize the default value of the `null` date value text. |
 
 ### Enums
 
