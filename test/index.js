@@ -712,6 +712,48 @@ test("Select:nullOption", function(tape) {
   );
 });
 
+test("Select:isCollapsed:true", function(tape) {
+  tape.plan(1);
+
+  tape.strictEqual(
+    new Select({
+      type: Country,
+      options: { isCollapsed: true },
+      ctx: ctx
+    }).getLocals().isCollapsed,
+    true,
+    "should handle help option"
+  );
+});
+
+test("Select:isCollapsed:false", function(tape) {
+  tape.plan(1);
+
+  tape.strictEqual(
+    new Select({
+      type: Country,
+      options: { isCollapsed: false },
+      ctx: ctx
+    }).getLocals().isCollapsed,
+    false,
+    "should handle help option"
+  );
+});
+
+test("Select:onCollapse", function(tape) {
+  tape.plan(1);
+  const onCollapsFunc = () => {};
+  tape.strictEqual(
+    new Select({
+      type: Country,
+      options: { onCollapseChange: onCollapsFunc },
+      ctx: ctx
+    }).getLocals().onCollapseChange,
+    onCollapsFunc,
+    "should handle help option"
+  );
+});
+
 var Checkbox = core.Checkbox;
 
 test("Checkbox:label", function(tape) {

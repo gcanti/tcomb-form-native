@@ -954,6 +954,36 @@ var options = {
 };
 ```
 
+### Options isCollapsed
+
+You can determinate if Select is collapsed:
+
+```js
+var options = {
+  fields: {
+    gender: {
+      isCollapsed: false // default: true
+    }
+  }
+};
+```
+
+If option not set, default is `true`
+
+### Options onCollapseChange
+
+You can set a callback, triggered, when collapse change:
+
+```js
+var options = {
+  fields: {
+    gender: {
+      onCollapseChange: () => { console.log('collapse changed'); }
+    }
+  }
+};
+```
+
 ## DatePicker component
 
 Implementation: `DatePickerIOS`
