@@ -4,7 +4,7 @@
 
 # Notice
 
-`tcomb-form-native` is looking for maintainers. If you're interested in helping a great way to get started would just be to start weighing-in on GitHub issues, reviewing and testing some PRs.
+`tcomb-form-native` is looking for maintainers. If you're interested in helping a great way to get started would just be to start weighing-in on [GitHub issues](https://github.com/gcanti/tcomb-form-native/issues), reviewing and testing some [PRs](https://github.com/gcanti/tcomb-form-native/pulls).
 
 # Contents
 
@@ -1583,4 +1583,4 @@ fix added:
 
 # License
 
-MIT
+[MIT](LICENSE)
