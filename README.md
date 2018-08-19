@@ -542,6 +542,19 @@ var Person = t.struct({
 
 Dates are displayed as `DatePickerIOS`s under iOS and `DatePickerAndroid` or `TimePickerAndroid` under Android, depending on the `mode` selected (`date` or `time`).
 
+Under Android, use the `fields` option to configure which `mode` to display the Picker:
+
+```js
+// see the "Rendering options" section in this guide
+var options = {
+  fields: {
+    birthDate: {
+      mode: 'date' // display the Date field as a DatePickerAndroid
+    }
+  }
+};
+```
+
 #### iOS date `config` option
 
 The bundled template will render an iOS `UIDatePicker` component, but collapsed into a touchable component in order to improve usability. A `config` object can be passed to customize it with the following parameters:
