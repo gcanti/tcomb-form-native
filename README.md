@@ -886,7 +886,7 @@ The following standard options are available (see http://facebook.github.io/reac
 - `textAlignVertical`
 - ~~`underlineColorAndroid`~~
 
-`underlineColorAndroid` is not supported now on `t-comb-form-native` due to random crashes on Android, especially on ScrollView. See more on:
+`underlineColorAndroid` is not supported now on `tcomb-form-native` due to random crashes on Android, especially on ScrollView. See more on:
 https://github.com/facebook/react-native/issues/17530#issuecomment-416367184
 
 ## Checkbox component
