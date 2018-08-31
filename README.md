@@ -873,6 +873,7 @@ Age.getValidationErrorMessage = function (value, path, context) {
 
 The following standard options are available (see http://facebook.github.io/react-native/docs/textinput.html):
 
+- `allowFontScaling`
 - `autoCapitalize`
 - `autoCorrect`
 - `autoFocus`
