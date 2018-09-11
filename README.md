@@ -542,6 +542,19 @@ var Person = t.struct({
 
 Dates are displayed as `DatePickerIOS`s under iOS and `DatePickerAndroid` or `TimePickerAndroid` under Android, depending on the `mode` selected (`date` or `time`).
 
+Under Android, use the `fields` option to configure which `mode` to display the Picker:
+
+```js
+// see the "Rendering options" section in this guide
+var options = {
+  fields: {
+    birthDate: {
+      mode: 'date' // display the Date field as a DatePickerAndroid
+    }
+  }
+};
+```
+
 #### iOS date `config` option
 
 The bundled template will render an iOS `UIDatePicker` component, but collapsed into a touchable component in order to improve usability. A `config` object can be passed to customize it with the following parameters:
@@ -860,6 +873,7 @@ Age.getValidationErrorMessage = function (value, path, context) {
 
 The following standard options are available (see http://facebook.github.io/react-native/docs/textinput.html):
 
+- `allowFontScaling`
 - `autoCapitalize`
 - `autoCorrect`
 - `autoFocus`
@@ -885,7 +899,10 @@ The following standard options are available (see http://facebook.github.io/reac
 - `textAlign`
 - `textAlignVertical`
 - `textContentType`
-- `underlineColorAndroid`
+- ~~`underlineColorAndroid`~~
+
+`underlineColorAndroid` is not supported now on `tcomb-form-native` due to random crashes on Android, especially on ScrollView. See more on:
+https://github.com/facebook/react-native/issues/17530#issuecomment-416367184
 
 ## Checkbox component
 
