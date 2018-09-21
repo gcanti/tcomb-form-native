@@ -898,6 +898,7 @@ The following standard options are available (see http://facebook.github.io/reac
 - `selectionState`
 - `textAlign`
 - `textAlignVertical`
+- `textContentType`
 - ~~`underlineColorAndroid`~~
 
 `underlineColorAndroid` is not supported now on `tcomb-form-native` due to random crashes on Android, especially on ScrollView. See more on:
