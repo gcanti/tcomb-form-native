@@ -33,7 +33,7 @@ The style management is coded in the `lib/stylesheets/bootstrap` module, specifi
 ```js
 textbox: {
 
-  // the style applied wihtout errors
+  // the style applied without errors
   normal: {
     color: '#000000',
     fontSize: 17,
@@ -45,7 +45,7 @@ textbox: {
     marginBottom: 5
   },
 
-  // the style applied when a validation error occours
+  // the style applied when a validation error occures
   error: {
     color: '#000000',
     fontSize: 17,
