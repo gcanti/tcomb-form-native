@@ -33,7 +33,7 @@ The style management is coded in the `lib/stylesheets/bootstrap` module, specifi
 ```js
 textbox: {
 
-  // the style applied wihtout errors
+  // the style applied without errors
   normal: {
     color: '#000000',
     fontSize: 17,
@@ -45,7 +45,7 @@ textbox: {
     marginBottom: 5
   },
 
-  // the style applied when a validation error occours
+  // the style applied when a validation error occures
   error: {
     color: '#000000',
     fontSize: 17,
@@ -115,6 +115,7 @@ const options = {
 - controlLabel
 - helpBlock
 - errorBlock
+- textboxView
 
 ## Overriding the style globally
 
@@ -175,8 +176,8 @@ const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
 
 stylesheet.formGroup.normal.flexDirection = 'row';
 stylesheet.formGroup.error.flexDirection = 'row';
-stylesheet.textbox.normal.flex = 1;
-stylesheet.textbox.error.flex = 1;
+stylesheet.textboxView.normal.flex = 1;
+stylesheet.textboxView.error.flex = 1;
 
 const options = {
   stylesheet: stylesheet
@@ -186,3 +187,35 @@ const options = {
 **Output**
 
 ![](images/stylesheets/6.png)
+
+
+### Material Design Style Underlines
+
+```js
+var _ = require('lodash');
+
+const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+
+stylesheet.textbox.normal.borderWidth = 0;
+stylesheet.textbox.error.borderWidth = 0;
+stylesheet.textbox.normal.marginBottom = 0;
+stylesheet.textbox.error.marginBottom = 0;
+
+stylesheet.textboxView.normal.borderWidth = 0;
+stylesheet.textboxView.error.borderWidth = 0;
+stylesheet.textboxView.normal.borderRadius = 0;
+stylesheet.textboxView.error.borderRadius = 0;
+stylesheet.textboxView.normal.borderBottomWidth = 1;
+stylesheet.textboxView.error.borderBottomWidth = 1;
+stylesheet.textboxView.normal.marginBottom = 5;
+stylesheet.textboxView.error.marginBottom = 5;
+
+const options = {
+  stylesheet: stylesheet
+};
+```
+
+**Output**
+
+![](images/stylesheets/7.png)
+

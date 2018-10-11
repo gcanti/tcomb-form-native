@@ -10,6 +10,79 @@
 
 **Note**: Gaps between patch versions are faulty/broken releases.
 
+## 0.6.11
+
+- **New Feature**
+    - add support for datetime in Android, closes #283 (@alvaromb)
+- **Polish**
+    - lib uses prettier formatting (@alvaromb)
+
+## 0.6.10
+
+- **New Feature**
+    - add pureValidate method on Form (@papuaaaaaaa)
+    - add option to change dialog mode for DatePickerAndroid (@javiercr)
+    - add onPress handler for DatePicker (@koenpunt)
+- **Bug fix**
+    - remove checkbox label when auto === 'none' (@OzoTek)
+- **Polish**
+    - fix broken link in README (@Hitabis)
+    - add version support table, closes #248 (@alvaromb)
+    - updated React to 15.6.1 and added PropTypes Dependency (@garylesueur)
+
+## 0.6.9
+
+- **Bug fix**
+    - Android timepicker always open the current time (@francescjimenez)
+
+## 0.6.8
+
+- **New Feature**
+    - allow disabling datepicker by passing disabled prop to touchableopacity we can disable the datepicker (@koenpunt)
+- **Bug fix**
+    - Add proper border color to select.ios when there is an error, fix #342 (@javiercr)
+
+## 0.6.7
+
+- **Bug fix**
+    - fix #301, PR https://github.com/gcanti/tcomb-form-native/pull/329 (@danilvalov)
+
+## 0.6.6
+
+- **Polish**
+    - Solves scroll view issues with text fields in Android, fix #301 (@alvaromb)
+
+## v0.6.5
+
+- **New Feature**
+    - Added `onContentSizeChange` as an option for TextBox (@nemo)
+
+## v0.6.4
+
+- **New Feature**
+    - Wrap TextInput in a View for More Customizable Styling, e.g. [Material Design Style Underlines](https://github.com/gcanti/tcomb-form-native/blob/master/docs/STYLESHEETS.md#material-design-style-underlines) (@kenleezle)
+
+## v0.6.3
+
+- **New Feature**
+    - Ability to style picker container (@dbonner1987)
+
+## v0.6.2
+
+- **New Feature**
+    - Make `underlineColorAndroid` transparent by default, fix #239 (@adamrainsby)
+
+## v0.6.1
+
+- **New Feature**
+    - Added support for minDate and maxDate in Android TimePickerAndroid (@alvaromb)
+
+## v0.6.0
+
+- **Breaking Change**
+    - Added collapsable iOS DatePicker (@alvaromb)
+    - Added collapsable iOS Picker (@alvaromb)
+
 ## v0.5.3
 
 - **Bug Fix**

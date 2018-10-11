@@ -2,6 +2,24 @@
 [![dependency status](https://img.shields.io/david/gcanti/tcomb-form-native.svg?style=flat-square)](https://david-dm.org/gcanti/tcomb-form-native)
 ![npm downloads](https://img.shields.io/npm/dm/tcomb-form-native.svg)
 
+# Notice
+
+`tcomb-form-native` is looking for maintainers. If you're interested in helping, a great way to get started would just be to start weighing-in on [GitHub issues](https://github.com/gcanti/tcomb-form-native/issues), reviewing and testing some [PRs](https://github.com/gcanti/tcomb-form-native/pulls).
+
+# Contents
+
+- [Setup](#setup)
+- [Supported react-native versions](#supported-react-native-versions)
+- [Example](#example)
+- [API](#api)
+- [Types](#types)
+- [Rendering options](#rendering-options)
+- [Unions](#unions)
+- [Lists](#lists)
+- [Customizations](#customizations)
+- [Tests](#tests)
+- [License](#license)
+
 # Setup
 
 ```
@@ -10,9 +28,12 @@ npm install tcomb-form-native
 
 # Supported react-native versions
 
-- tcomb-form-native ^0.5: react-native >= 0.25.0
-- tcomb-form-native ^0.4: react-native >= 0.20.0
-- tcomb-form-native ^0.3: react-native < 0.13.0
+| Version | React Native Support | Android Support | iOS Support |
+|---|---|---|---|
+| 0.5 - 0.6.1 | 0.25.0 - 0.35.0 | 7.1 | 10.0.2 |
+| 0.4 | 0.20.0 - 0.24.0 | 7.1 | 10.0.2 |
+| 0.3 | 0.1.0 - 0.13.0  | 7.1 | 10.0.2 |
+*Complies with [react-native-version-support-table](https://github.com/dangnelson/react-native-version-support-table)*
 
 ### Domain Driven Forms
 
@@ -104,11 +125,6 @@ var styles = StyleSheet.create({
     marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
-  },
-  title: {
-    fontSize: 30,
-    alignSelf: 'center',
-    marginBottom: 30
   },
   buttonText: {
     fontSize: 18,
@@ -241,7 +257,7 @@ var AwesomeProject = React.createClass({
 
   onChange(value) {
     // tcomb immutability helpers
-    // https://github.com/gcanti/tcomb/blob/master/GUIDE.md#updating-immutable-instances
+    // https://github.com/gcanti/tcomb/blob/master/docs/API.md#updating-immutable-instances
     var options = t.update(this.state.options, {
       fields: {
         name: {
@@ -375,12 +391,12 @@ var AwesomeProject = React.createClass({
 
 ## Dynamic forms example: how to change a form based on selection
 
-Say I have an iospicker, depending on which option is selected in this picker I want the next component to either be a checkbox or a textbox:
+Say I have an iOS Picker, depending on which option is selected in this picker I want the next component to either be a checkbox or a textbox:
 
 ```js
 const Country = t.enums({
   'IT': 'Italy',
-  'US': 'Unisted States'
+  'US': 'United States'
 }, 'Country');
 
 var AwesomeProject = React.createClass({
@@ -390,7 +406,7 @@ var AwesomeProject = React.createClass({
     if (value.country === 'IT') {
       return t.struct({
         country: Country,
-        rememebrMe: t.Boolean
+        rememberMe: t.Boolean
       });
     } else if (value.country === 'US') {
       return t.struct({
@@ -526,6 +542,32 @@ var Person = t.struct({
 
 Dates are displayed as `DatePickerIOS`s under iOS and `DatePickerAndroid` or `TimePickerAndroid` under Android, depending on the `mode` selected (`date` or `time`).
 
+Under Android, use the `fields` option to configure which `mode` to display the Picker:
+
+```js
+// see the "Rendering options" section in this guide
+var options = {
+  fields: {
+    birthDate: {
+      mode: 'date' // display the Date field as a DatePickerAndroid
+    }
+  }
+};
+```
+
+#### iOS date `config` option
+
+The bundled template will render an iOS `UIDatePicker` component, but collapsed into a touchable component in order to improve usability. A `config` object can be passed to customize it with the following parameters:
+
+| Key | Value |
+|-----|-------|
+| `animation` | The animation to collapse the date picker. Defaults to `Animated.timing`. |
+| `animationConfig` | The animation configuration object. Defaults to `{duration: 200}` for the default animation. |
+| `format` | A `(date) => String(date)` kind of function to provide a custom date format parsing to display the value. Optional, defaults to `(date) => String(date)`.
+| `defaultValueText` | An `string` to customize the default value of the `null` date value text. |
+
+For the collapsible customization, look at the `dateTouchable` and `dateValue` keys in the stylesheet file.
+
 #### Android date `config` option
 
 When using a `t.Date` type in Android, it can be configured through a `config` option that take the following parameters:
@@ -534,6 +576,8 @@ When using a `t.Date` type in Android, it can be configured through a `config` o
 |-----|-------|
 | ``background`` | Determines the type of background drawable that's going to be used to display feedback. Optional, defaults to ``TouchableNativeFeedback.SelectableBackground``. |
 | ``format`` | A ``(date) => String(date)`` kind of function to provide a custom date format parsing to display the value. Optional, defaults to ``(date) => String(date)``.
+| ``dialogMode`` | Determines the type of datepicker mode for Android (`default`, `spinner` or `calendar`). |
+| `defaultValueText` | An `string` to customize the default value of the `null` date value text. |
 
 ### Enums
 
@@ -556,6 +600,17 @@ var Person = t.struct({
 ```
 
 Enums are displayed as `Picker`s.
+
+#### iOS select `config` option
+
+The bundled template will render an iOS `UIPickerView` component, but collapsed into a touchable component in order to improve usability. A `config` object can be passed to customize it with the following parameters:
+
+| Key | Value |
+|-----|-------|
+| `animation` | The animation to collapse the date picker. Defaults to `Animated.timing`. |
+| `animationConfig` | The animation configuration object. Defaults to `{duration: 200}` for the default animation. |
+
+For the collapsible customization, look at the `pickerContainer`, `pickerTouchable` and `pickerValue` keys in the stylesheet file.
 
 ### Refinements
 
@@ -818,6 +873,7 @@ Age.getValidationErrorMessage = function (value, path, context) {
 
 The following standard options are available (see http://facebook.github.io/react-native/docs/textinput.html):
 
+- `allowFontScaling`
 - `autoCapitalize`
 - `autoCorrect`
 - `autoFocus`
@@ -833,6 +889,7 @@ The following standard options are available (see http://facebook.github.io/reac
 - `onEndEditing`
 - `onFocus`
 - `onSubmitEditing`
+- `onContentSizeChange`
 - `password`
 - `placeholderTextColor`
 - `returnKeyType`
@@ -841,7 +898,11 @@ The following standard options are available (see http://facebook.github.io/reac
 - `selectionState`
 - `textAlign`
 - `textAlignVertical`
-- `underlineColorAndroid`
+- `textContentType`
+- ~~`underlineColorAndroid`~~
+
+`underlineColorAndroid` is not supported now on `tcomb-form-native` due to random crashes on Android, especially on ScrollView. See more on:
+https://github.com/facebook/react-native/issues/17530#issuecomment-416367184
 
 ## Checkbox component
 
@@ -880,7 +941,7 @@ You can customize the null option with the `nullOption` option:
 var options = {
   fields: {
     gender: {
-      nullOption: {value: '', label: 'Choose your gender'}
+      nullOption: {value: '', text: 'Choose your gender'}
     }
   }
 };
@@ -901,6 +962,36 @@ var options = {
   fields: {
     gender: {
       order: 'asc' // or 'desc'
+    }
+  }
+};
+```
+
+### Options isCollapsed
+
+You can determinate if Select is collapsed:
+
+```js
+var options = {
+  fields: {
+    gender: {
+      isCollapsed: false // default: true
+    }
+  }
+};
+```
+
+If option not set, default is `true`
+
+### Options onCollapseChange
+
+You can set a callback, triggered, when collapse change:
+
+```js
+var options = {
+  fields: {
+    gender: {
+      onCollapseChange: () => { console.log('collapse changed'); }
     }
   }
 };
@@ -1039,6 +1130,68 @@ const Person = t.struct({
 });
 
 const Persons = t.list(Person);
+```
+
+If you want to provide options for your nested structures they must be nested
+following the type structure. Here is an example:
+
+```js
+const Person = t.struct({
+  name: t.Struct,
+  position: t.Struct({
+    latitude: t.Number,
+    longitude: t.Number
+  });
+});
+
+const options = {
+  fields: { // <= Person options
+    name: {
+        label: 'name label'
+    }
+    position: {
+        fields: {
+            // Note that latitude is not directly nested in position,
+            // but in the fields property
+            latitude: {
+                label: 'My position label'
+            }
+        }
+    }
+  }
+});
+```
+
+When dealing with `t.list`, make sure to declare the `fields` property inside the `item` property, as such:
+
+```js
+const Documents = t.struct({
+  type: t.Number,
+  value: t.String
+})
+
+const Person = t.struct({
+  name: t.Struct,
+  documents: t.list(Documents)
+});
+
+const options = {
+  fields: {
+    name: { /*...*/ },
+    documents: {
+      item: {
+        fields: {
+          type: {
+            // Documents t.struct 'type' options
+          },
+          value: {
+            // Documents t.struct 'value' options
+          }
+        }
+      }
+    }
+  }
+}
 ```
 
 ## Internationalization
@@ -1240,13 +1393,13 @@ For a complete example see the default template https://github.com/gcanti/tcomb-
 
 ## i18n
 
-tcomb-form-native comes with a default internationalization (English). You can customize the look and feel by setting another i18n:
+tcomb-form-native comes with a default internationalization (English). You can change it by setting another i18n object:
 
 ```js
 var t = require('tcomb-form-native/lib');
 var templates = require('tcomb-form-native/lib/templates/bootstrap');
 
-// define a stylesheet (see tcomb-form-native/lib/i18n/en for an example)
+// define an object containing your translations (see tcomb-form-native/lib/i18n/en for an example)
 var i18n = {...};
 
 // override globally the default i18n
@@ -1443,4 +1596,4 @@ fix added:
 
 # License
 
-MIT
+[MIT](LICENSE)
