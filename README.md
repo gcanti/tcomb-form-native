@@ -906,7 +906,7 @@ https://github.com/facebook/react-native/issues/17530#issuecomment-416367184
 
 ## Checkbox component
 
-Implementation: `SwitchIOS`
+Implementation: `Switch`
 
 The following options are similar to the `Textbox` component's ones:
 
@@ -916,10 +916,10 @@ The following options are similar to the `Textbox` component's ones:
 
 ### Other standard options
 
-The following standard options are available (see http://facebook.github.io/react-native/docs/switchios.html):
+The following standard options are available (see https://facebook.github.io/react-native/docs/switch#docsNav):
 
 - `disabled`
-- `onTintColor`
+- `trackColor`
 - `thumbTintColor`
 - `tintColor`
 
