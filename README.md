@@ -565,6 +565,7 @@ The bundled template will render an iOS `UIDatePicker` component, but collapsed 
 | `animationConfig` | The animation configuration object. Defaults to `{duration: 200}` for the default animation. |
 | `format` | A `(date) => String(date)` kind of function to provide a custom date format parsing to display the value. Optional, defaults to `(date) => String(date)`.
 | `defaultValueText` | An `string` to customize the default value of the `null` date value text. |
+| `locale` | An `string` to set the locale for the component. |
 
 For the collapsible customization, look at the `dateTouchable` and `dateValue` keys in the stylesheet file.
 
