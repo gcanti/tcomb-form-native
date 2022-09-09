@@ -1,3 +1,11 @@
+I forked this from gcanti to keep things updated.
+
+updates from original gcanti repo:
+- Select components exported from `@react-native-picker/picker`
+- Datepicker components exported from `@react-native-community/datetimepicker` and fixed necessary prop names
+
+---
+
 [![build status](https://img.shields.io/travis/gcanti/tcomb-form-native/master.svg?style=flat-square)](https://travis-ci.org/gcanti/tcomb-form-native)
 [![dependency status](https://img.shields.io/david/gcanti/tcomb-form-native.svg?style=flat-square)](https://david-dm.org/gcanti/tcomb-form-native)
 ![npm downloads](https://img.shields.io/npm/dm/tcomb-form-native.svg)
