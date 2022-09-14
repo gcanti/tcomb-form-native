@@ -23,18 +23,18 @@
     "tcomb-validation": "^3.0.0"
   },
   "devDependencies": {
-    "@types/eslint-plugin-prettier": "^2.2.0",
-    "@types/prettier": "^1.7.0",
-    "babel": "5.8.34",
-    "babel-core": "5.8.34",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "2.5.2",
-    "prettier": "^1.7.4",
+    "@types/eslint-plugin-prettier": "^3.1.0",
+    "@types/prettier": "^2.7.0",
+    "babel": "6.23.0",
+    "babel-core": "6.26.3",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "7.31.8",
+    "prettier": "^2.7.1",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "tape": "3.5.0"
+    "react": "^18.2.0",
+    "tape": "5.6.0"
   },
   "tags": [
     "tcomb",
